@@ -30,7 +30,9 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author shuigedeng
  * @since 2020/5/2 16:42
  */
-@FeignClient(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT, fallbackFactory = RefundLogApiFallback.class)
+@FeignClient(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
+	contextId = "RefundLogApi",
+	fallbackFactory = RefundLogApiFallback.class)
 public interface RefundLogApi {
 
     @GetMapping("/pay/flow/info/id/{id:[0-9]*}")
