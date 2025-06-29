@@ -1,3 +1,6 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 /*
  * Copyright (c) 2020-2030, Shuigedeng (981376577@qq.com & https://blog.taotaocloud.top/).
  *
@@ -24,21 +27,21 @@ buildscript {
         ttcVersion = version
         ttcGroup = "io.github.shuigedeng"
 
-        springBootVersion = "3.4.5"
+        springBootVersion = "3.5.3"
         querydslAptVersion = "5.1.0"
         mapstructProcessorVersion = "1.6.3"
         lombokMapstructBindingVersion = "0.2.0"
         lombokVersion = "1.18.38"
-        recordBuilderVersion = "45"
+        recordBuilderVersion = "47"
     }
 
     repositories {
         mavenLocal()
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url = "https://plugins.gradle.org/m2/" }
 
         maven {
             allowInsecureProtocol = true
-            url "https://maven.aliyun.com/nexus/content/groups/public/"
+            url = "https://maven.aliyun.com/nexus/content/groups/public/"
         }
         maven {
             allowInsecureProtocol = true
@@ -47,7 +50,7 @@ buildscript {
                 username = findProperty("mavenUsername") ?: System.getenv("TAOTAO_CLOUD_MAVEN_USERNAME")
                 password = findProperty("mavenPassword") ?: System.getenv("TAOTAO_CLOUD_MAVEN_PASSWORD")
             }
-            url 'https://repo.rdc.aliyun.com/repository/136936-release-reey0l/'
+            url = 'https://repo.rdc.aliyun.com/repository/136936-release-reey0l/'
         }
         //阿里云新的仓库
         maven {
@@ -55,47 +58,47 @@ buildscript {
                 username = findProperty("mavenUsernameNew") ?: System.getenv("TAOTAO_CLOUD_MAVEN_USERNAME_NEW")
                 password = findProperty("mavenPasswordNew") ?: System.getenv("TAOTAO_CLOUD_MAVEN_PASSWORD_NEW")
             }
-            url 'https://packages.aliyun.com/60516c4824e1e6fbecd22990/maven/2085441-release-8v0qbs/'
+            url = 'https://packages.aliyun.com/60516c4824e1e6fbecd22990/maven/2085441-release-8v0qbs/'
         }
 
         maven {
             allowInsecureProtocol = true
-            url "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
+            url = "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
         }
 
         maven {
             allowInsecureProtocol = true
-            url "https://mirrors.huaweicloud.com/repository/maven/"
+            url = "https://mirrors.huaweicloud.com/repository/maven/"
         }
 
         mavenCentral()
         gradlePluginPortal()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
-        maven { url 'https://repo.spring.io/release' }
+        maven { url = "https://repo.spring.io/snapshot" }
+        maven { url = "https://repo.spring.io/milestone" }
+        maven { url = 'https://repo.spring.io/release' }
 
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url = 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url = 'https://maven.aliyun.com/repository/google' }
+        maven { url = 'https://maven.aliyun.com/repository/central' }
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
         google()
 
-        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     }
 
     dependencies {
         /* 添加插件依赖路径（通过jar方式） */
 
         //https://plugins.gradle.org/m2/com/github/spotbugs/snom/spotbugs-gradle-plugin/
-        classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.1.10"
+        classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.2.1"
 
         //https://github.com/spring-io/spring-javaformat/
-        classpath "io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.43"
+        classpath "io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.47"
 
         //代码混淆工具
         //https://github.com/Guardsquare/proguard
         //https://www.guardsquare.com/manual/quickstart
-        classpath "com.guardsquare:proguard-gradle:7.6.1"
+        classpath "com.guardsquare:proguard-gradle:7.7.0"
     }
 }
 
@@ -147,11 +150,11 @@ plugins {
 
     //smart-doc gradle 插件
     // https://plugins.gradle.org/plugin/com.ly.smart-doc
-    id "com.ly.smart-doc" version "3.0.9"
+    id "com.ly.smart-doc" version "3.1.0"
 
     //OWASP 依赖检查插件。
     //https://plugins.gradle.org/plugin/org.owasp.dependencycheck
-    id "org.owasp.dependencycheck" version "12.1.1"
+    id "org.owasp.dependencycheck" version "12.1.3"
 
     //用于管理 Docker 镜像和容器的 Gradle 插件。
     //https://plugins.gradle.org/plugin/com.bmuschko.docker-spring-boot-application
@@ -163,13 +166,13 @@ plugins {
 
     //用于运行 SonarQube 分析的 Gradle 插件。
     //https://plugins.gradle.org/plugin/org.sonarqube
-    id "org.sonarqube" version "6.0.1.5171"
+    id "org.sonarqube" version "6.2.0.5505"
 
     //Spring Boot 可以轻松创建独立的、生产级的基于 Spring 的应用程序，您可以“直接运行”
     // 我们对 Spring 平台和第三方库持固执己见的看法，
     // 大多数 Spring Boot 应用程序只需要很少的 Spring 配置
     //https://plugins.gradle.org/plugin/org.springframework.boot
-    id "org.springframework.boot" version "3.4.5"
+    id "org.springframework.boot" version "3.5.3"
 
     //一个 Gradle 插件，提供类似 Maven 的依赖管理功能
     //https://plugins.gradle.org/plugin/io.spring.dependency-management
@@ -177,14 +180,14 @@ plugins {
 
     //Protobuf 插件为您的项目提供 protobuf 编译。
     //https://plugins.gradle.org/plugin/com.google.protobuf
-    id "com.google.protobuf" version "0.9.4"
+    id "com.google.protobuf" version "0.9.5"
 
     //https://github.com/diffplug/spotless/blob/main/plugin-gradle/README.md
     //https://plugins.gradle.org/plugin/com.diffplug.spotless
-    id "com.diffplug.spotless" version "7.0.3"
+    id "com.diffplug.spotless" version "7.0.4"
 
     //https://plugins.gradle.org/plugin/com.gorylenko.gradle-git-properties
-    id "com.gorylenko.gradle-git-properties" version "2.4.2"
+    id "com.gorylenko.gradle-git-properties" version "2.5.0"
 
     //https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
     id 'org.graalvm.buildtools.native' version '0.10.6'
@@ -203,14 +206,19 @@ plugins {
     //alias(projectLibs.plugins.kotlin.jvm)
     //alias(projectLibs.plugins.kotlin.spring)
     //alias(projectLibs.plugins.docker)
+
+    //https://github.com/vanniktech/gradle-maven-publish-plugin
+    //https://vanniktech.github.io/gradle-maven-publish-plugin/central/v
+    //https://vanniktech.github.io/gradle-maven-publish-plugin/other/
+    id "com.vanniktech.maven.publish" version "0.33.0"
 }
 
 // 定义库引用
 //var pLibs = projectLibs
 
 allprojects {
-    version project.ttcVersion
-    group project.ttcGroup
+    version = project.ttcVersion
+    group = project.ttcGroup
 
     // 全部项目有基础插件kotlin jvm/spring
     //apply {
@@ -263,12 +271,12 @@ allprojects {
         mavenCentral()
 
         maven {
-            url "https://repo1.maven.org/maven2"
+            url = "https://repo1.maven.org/maven2"
         }
 
         maven {
             allowInsecureProtocol = true
-            url 'https://maven.aliyun.com/repository/public'
+            url = 'https://maven.aliyun.com/repository/public'
         }
         maven {
             allowInsecureProtocol = true
@@ -277,7 +285,7 @@ allprojects {
                 username = findProperty("mavenUsername") ?: System.getenv("TAOTAO_CLOUD_MAVEN_USERNAME")
                 password = findProperty("mavenPassword") ?: System.getenv("TAOTAO_CLOUD_MAVEN_PASSWORD")
             }
-            url 'https://repo.rdc.aliyun.com/repository/136936-release-reey0l/'
+            url = 'https://repo.rdc.aliyun.com/repository/136936-release-reey0l/'
         }
         //阿里云新的仓库
         maven {
@@ -285,39 +293,41 @@ allprojects {
                 username = findProperty("mavenUsernameNew") ?: System.getenv("TAOTAO_CLOUD_MAVEN_USERNAME_NEW")
                 password = findProperty("mavenPasswordNew") ?: System.getenv("TAOTAO_CLOUD_MAVEN_PASSWORD_NEW")
             }
-            url 'https://packages.aliyun.com/60516c4824e1e6fbecd22990/maven/2085441-release-8v0qbs/'
+            url = 'https://packages.aliyun.com/60516c4824e1e6fbecd22990/maven/2085441-release-8v0qbs/'
         }
 
         maven {
             allowInsecureProtocol = true
-            url "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
+            url = "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
         }
 
         maven {
             allowInsecureProtocol = true
-            url "https://mirrors.huaweicloud.com/repository/maven/"
+            url = "https://mirrors.huaweicloud.com/repository/maven/"
         }
 
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
-        maven { url 'https://repo.spring.io/release' }
+        maven { url = "https://repo.spring.io/snapshot" }
+        maven { url = "https://repo.spring.io/milestone" }
+        maven { url = 'https://repo.spring.io/release' }
 
-        maven { url "https://maven.aliyun.com/repository/central" }
-        maven { url "https://maven.aliyun.com/repository/public" }
-        maven { url "https://maven.aliyun.com/repository/google" }
-        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
-        maven { url "https://maven.aliyun.com/repository/spring" }
-        maven { url "https://maven.aliyun.com/repository/spring-plugin" }
-        maven { url "https://maven.aliyun.com/repository/grails-core" }
-        maven { url "https://maven.aliyun.com/repository/apache-snapshots" }
+        maven { url = "https://maven.aliyun.com/repository/central" }
+        maven { url = "https://maven.aliyun.com/repository/public" }
+        maven { url = "https://maven.aliyun.com/repository/google" }
+        maven { url = "https://maven.aliyun.com/repository/gradle-plugin" }
+        maven { url = "https://maven.aliyun.com/repository/spring" }
+        maven { url = "https://maven.aliyun.com/repository/spring-plugin" }
+        maven { url = "https://maven.aliyun.com/repository/grails-core" }
+        maven { url = "https://maven.aliyun.com/repository/apache-snapshots" }
 
-        maven { url "https://repository.aspose.com/repo/" }
-        maven { url "https://repo.e-iceblue.cn/repository/maven-public/" }
+        maven { url = "https://repository.aspose.com/repo/" }
+        maven { url = "https://repo.e-iceblue.cn/repository/maven-public/" }
 
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
+import com.vanniktech.maven.publish.SonatypeHost
+import com.vanniktech.maven.publish.JavaPlatform
 
 subprojects {
     apply plugin: 'java'
@@ -329,7 +339,7 @@ subprojects {
     //apply plugin: "org.cyclonedx.bom"
 
     apply from: rootProject.file('gradle/jacoco.gradle')
-    apply from: rootProject.file('gradle/publish-jar.gradle')
+    //apply from: rootProject.file('gradle/publish-jar.gradle')
     apply from: rootProject.file('gradle/checkstyle.gradle')
     apply from: rootProject.file('gradle/spotless.gradle')
     apply from: rootProject.file('gradle/spotbugs.gradle')
@@ -341,18 +351,18 @@ subprojects {
     dependencies {
         implementation platform("io.github.shuigedeng:taotao-cloud-dependencies:$ttcVersion")
 
-        compileOnly "org.projectlombok:lombok"
+        implementation "org.projectlombok:lombok"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
 
-        compileOnly "io.soabase.record-builder:record-builder-core"
+        implementation "io.soabase.record-builder:record-builder-core"
         annotationProcessor "io.soabase.record-builder:record-builder-processor:${recordBuilderVersion}"
 
-        compileOnly "org.mapstruct:mapstruct"
+        implementation "org.mapstruct:mapstruct"
         annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructProcessorVersion}"
         //https://github.com/entur/mapstruct-spi-protobuf
         //https://search.maven.org/artifact/no.entur.mapstruct.spi/protobuf-spi-impl
-        annotationProcessor "no.entur.mapstruct.spi:protobuf-spi-impl:1.47"
+        annotationProcessor "no.entur.mapstruct.spi:protobuf-spi-impl:1.49.0"
 
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
     }
@@ -364,8 +374,18 @@ subprojects {
                 cacheDynamicVersionsFor 0, "seconds"
             }
 
+            exclude group: 'com.vaadin.external.google', module: 'android-json'
+
             resolutionStrategy {
                 force 'net.minidev:json-smart:2.5.2'
+                //https://search.maven.org/artifact/com.google.protobuf/protobuf-java
+                force "com.google.protobuf:protobuf-java:3.25.6"
+                //https://search.maven.org/artifact/com.google.protobuf/protobuf-java-util
+                force "com.google.protobuf:protobuf-java-util:3.25.6"
+                force "com.google.protobuf:protobuf-javalite:3.25.6"
+                force "org.glassfish.jaxb:jaxb-runtime:4.0.5"
+                force "org.glassfish.jaxb:jaxb-core:4.0.5"
+                force "org.glassfish.jaxb:jaxb-xjc:4.0.5"
             }
         }
 
@@ -402,6 +422,237 @@ subprojects {
         jvmArgs += enablePreview
     }
 
+    apply plugin: 'com.vanniktech.maven.publish'
+
+    javadoc {
+        failOnError false
+
+        options {
+            author true
+            version true
+            title project.name
+            links "https://docs.oracle.com/en/java/javase/21/docs/api"
+        }
+
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+        options.addBooleanOption('-enable-preview', true)
+        options.addStringOption('-release', '21')
+
+        if(JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption('html5', true)
+        }
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile).configureEach {
+            options.compilerArgs += "--enable-preview"
+        }
+        tasks.withType(JavaExec).configureEach {
+            jvmArgs += "--enable-preview"
+        }
+
+        tasks.withType(JavaCompile) {
+            options.compilerArgs += [
+                    '-Xlint:unchecked',
+                    '-Xlint:deprecation',
+                    '--enable-preview',
+                    '--add-exports=java.desktop/sun.font=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.reflect.generics.tree=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.net.www.protocol.ftp=ALL-UNNAMED',
+                    '--add-exports=java.desktop/sun.awt=ALL-UNNAMED',
+                    '--add-exports=java.desktop/sun.font=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.security.action=ALL-UNNAMED',
+                    '--add-exports=java.base/java.lang=ALL-UNNAMED',
+                    '--add-exports=java.base/java.lang.reflect=ALL-UNNAMED',
+                    '--add-exports=java.base/java.lang.invoke=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.net=ALL-UNNAMED',
+                    '--add-exports=java.base/java.math=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.reflect.annotation=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.net=ALL-UNNAMED',
+                    '--add-exports=java.desktop/sun.awt=ALL-UNNAMED',
+                    '--add-exports=java.desktop/sun.font=ALL-UNNAMED',
+                    '--add-exports=jdk.management/com.sun.management.internal=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.security.action=ALL-UNNAMED',
+                    '--add-exports=java.base/java.lang=ALL-UNNAMED',
+                    '--add-exports=java.base/java.math=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.util.calendar=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util.concurrent=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util.concurrent.locks=ALL-UNNAMED',
+                    '--add-exports=java.base/java.security=ALL-UNNAMED',
+                    '--add-exports=java.base/jdk.internal.loader=ALL-UNNAMED',
+                    '--add-exports=java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED',
+                    '--add-exports=java.base/java.net=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.nio.ch=ALL-UNNAMED',
+                    '--add-exports=java.management/java.lang.management=ALL-UNNAMED',
+                    '--add-exports=jdk.management/com.sun.management.internal=ALL-UNNAMED',
+                    '--add-exports=java.management/sun.management=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.security.action=ALL-UNNAMED',
+                    '--add-exports=java.management/java.lang.management=ALL-UNNAMED',
+                    '--add-exports=jdk.management/com.sun.management.internal=ALL-UNNAMED',
+                    '--add-exports=java.management/sun.management=ALL-UNNAMED',
+                    '--add-exports=java.base/java.time=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util.concurrent=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util.concurrent.locks=ALL-UNNAMED',
+                    '--add-exports=java.base/java.security=ALL-UNNAMED',
+                    '--add-exports=java.base/jdk.internal.loader=ALL-UNNAMED',
+                    '--add-exports=java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED',
+                    '--add-exports=java.base/java.net=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.nio.ch=ALL-UNNAMED',
+                    '--add-exports=java.base/java.lang=ALL-UNNAMED',
+                    '--add-exports=java.base/java.math=ALL-UNNAMED',
+                    '--add-exports=java.base/java.util=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.util.calendar=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.net.util=ALL-UNNAMED',
+                    '--add-exports=java.base/sun.net.util=ALL-UNNAMED'
+            ]
+        }
+    }
+
+    tasks.withType(Jar).configureEach {
+        from(project.rootDir) {
+            include 'LICENSE.txt'
+            include 'NOTICE.txt'
+            into 'META-INF'
+        }
+    }
+
+    jar {
+        enabled = true
+        archiveClassifier = ""
+
+        manifest {
+            attributes(
+                    'Implementation-Title': project.name,
+                    'Implementation-Version': project.version,
+                    'Implementation-Vendor': 'Apache Software Foundation',
+                    'Implementation-Vendor-Id': project.group,
+                    'Specification-Version': LocalDateTime.now().getYear(),
+                    'Specification-Vendor': 'Apache Software Foundation',
+                    'Specification-Title': project.name,
+                    'Built-By': 'shuigedeng',
+                    'Automatic-Module-Name': project.name.replace("-", "."),
+                    'Implementation-URL': "https://github.com/shuigedeng/taotao-cloud-project",
+                    'Build-Jdk-Spec': JavaVersion.VERSION_21.toString(),
+                    'Bundle-DocURL': 'https://github.com/shuigedeng/taotao-cloud-project',
+                    'Built-Gradle': gradle.gradleVersion,
+                    'Build-OS': System.getProperty("os.name"),
+                    'Build-Jdk': System.getProperty("java.version"),
+                    'Build-Timestamp': LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+            )
+        }
+    }
+
+    // ci 自动发布 版本
+    tasks.register('publishJar', GradleBuild) {
+        def names = ['test', 'compileTestJava']
+        startParameter.setExcludedTaskNames(names)
+
+        tasks = ['clean', 'build', 'publishAllPublicationsToSonatypeRepository']
+    }
+
+    tasks.register('sourcesJar', Jar) {
+        dependsOn classes
+        //from sourceSets.main.allJava
+        from sourceSets.main.allSource
+
+        archiveClassifier = 'sources'
+    }
+
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
+        from javadoc
+        archiveClassifier = 'javadoc'
+    }
+
+    mavenPublishing {
+        publishing {
+            repositories {
+                maven {
+                    name = "AliyunNew"
+                    if (project.version.endsWith("-SNAPSHOT")) {
+                        url = "https://packages.aliyun.com/60516c4824e1e6fbecd22990/maven/2085441-snapshot-djviiu"
+                    } else {
+                        url = "https://packages.aliyun.com/60516c4824e1e6fbecd22990/maven/2085441-release-8v0qbs"
+                    }
+                    // username and password (a personal Github access token) should be specified as
+                    // `githubPackagesUsername` and `githubPackagesPassword` Gradle properties or alternatively
+                    // as `ORG_GRADLE_PROJECT_githubPackagesUsername` and `ORG_GRADLE_PROJECT_githubPackagesPassword`
+                    // environment variables
+                    allowInsecureProtocol = true
+                    credentials {
+                        username = findProperty("mavenUsernameNew") ?: System.getenv("TAOTAO_CLOUD_MAVEN_USERNAME_NEW")
+                        password = findProperty("mavenPasswordNew") ?: System.getenv("TAOTAO_CLOUD_MAVEN_PASSWORD_NEW")
+                    }
+                }
+
+                maven {
+                    name = "GitHub"
+                    url = uri("https://maven.pkg.github.com/shuigedeng/taotao-cloud-project")
+                    credentials {
+                        username = findProperty("githubUsername") ?: System.getenv("TAOTAO_CLOUD_GITHUB_USERNAME")
+                        password = findProperty("githubPassword") ?: System.getenv("TAOTAO_CLOUD_GITHUB_TOKEN")
+                    }
+                }
+            }
+        }
+
+        // 配置坐标,参数一要和命名空间一致，参二为项目名(GroupId),参三为版本号 "1.0.0"
+        coordinates(project.group.toString(), project.name, project.version.toString())
+
+        // 配置 pom 文件信息
+        pom {
+            // 项目名
+            name = project.name
+            // 项目描述
+            description = project.name
+            // 项目主页
+            url = "https://github.com/shuigedeng/taotao-cloud-project.git"
+
+            properties = [
+                    "java.version": JavaVersion.VERSION_21.toString(),
+                    "maven.compiler.source": JavaVersion.VERSION_21.toString(),
+                    "maven.compiler.target": JavaVersion.VERSION_21.toString(),
+                    "project.build.sourceEncoding": "UTF-8",
+                    "project.reporting.outputEncoding": "UTF-8",
+                    "spring-boot-dependencies.version"   : "3.5.3",
+                    "taotao-cloud-dependencies.version"   : rootProject.version,
+                    "taotao-boot-dependencies.version"   : rootProject.version
+            ]
+
+            //开源许可
+            licenses {
+                license {
+                    name = "The Apache License, Version 2.0"
+                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    distribution = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            }
+            //开发者信息
+            developers {
+                developer {
+                    name = "shuigedeng"
+                    url = "https://github.com/shuigedeng"
+                    email = "981376577@qq.com"
+                }
+            }
+            //照着仓库地址填写
+            scm {
+                connection = "scm:git:git@github.com:shuigedeng/taotao-cloud-project.git"
+                developerConnection = "scm:git:ssh://git@github.com:shuigedeng/taotao-cloud-project.git"
+                url = "https://github.com/shuigedeng/taotao-cloud-project.git"
+            }
+        }
+
+        // 发布到 Sonatype, 参数为 sonatype host,还可以是 SonatypeHost.DEFAULT,SonatypeHost.S0
+        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+        //进行签名
+        //signAllPublications()
+    }
 }
 
 

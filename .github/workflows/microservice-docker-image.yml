@@ -37,7 +37,7 @@ jobs:
       #    distribution: 'temurin'
 
       #https://github.com/marketplace/actions/github-action-for-graalvm
-      - uses: graalvm/setup-graalvm@v1.3.1
+      - uses: graalvm/setup-graalvm@v1.3.3
         with:
           java-version: '21'
           distribution: 'graalvm'
@@ -95,7 +95,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: "8.14"
+          gradle-version: "8.14.2"
 
       #https://github.com/marketplace/actions/gradle-build-action
       - name: Gradle BootJar
