@@ -78,51 +78,51 @@ public class DictItemPO extends BaseSuperEntity<DictItemPO, Long> {
     @Column(name = "`sort_num`", columnDefinition = "int not null default 1 comment '排序值'")
     private Integer sortNum;
 
-	public Long getDictId() {
-		return dictId;
-	}
+    public Long getDictId() {
+        return dictId;
+    }
 
-	public void setDictId(Long dictId) {
-		this.dictId = dictId;
-	}
+    public void setDictId(Long dictId) {
+        this.dictId = dictId;
+    }
 
-	public String getItemText() {
-		return itemText;
-	}
+    public String getItemText() {
+        return itemText;
+    }
 
-	public void setItemText(String itemText) {
-		this.itemText = itemText;
-	}
+    public void setItemText(String itemText) {
+        this.itemText = itemText;
+    }
 
-	public String getItemValue() {
-		return itemValue;
-	}
+    public String getItemValue() {
+        return itemValue;
+    }
 
-	public void setItemValue(String itemValue) {
-		this.itemValue = itemValue;
-	}
+    public void setItemValue(String itemValue) {
+        this.itemValue = itemValue;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public Integer getSortNum() {
-		return sortNum;
-	}
+    public Integer getSortNum() {
+        return sortNum;
+    }
 
-	public void setSortNum(Integer sortNum) {
-		this.sortNum = sortNum;
-	}
+    public void setSortNum(Integer sortNum) {
+        this.sortNum = sortNum;
+    }
 }

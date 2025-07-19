@@ -16,9 +16,8 @@
 
 package com.taotao.cloud.payment.infrastructure.dataparam;
 
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @Setter
 @Getter

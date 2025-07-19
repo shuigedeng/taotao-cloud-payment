@@ -17,11 +17,10 @@
 package com.taotao.cloud.payment.application.dto.region.cmmond;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 地区更新对象
@@ -40,8 +39,7 @@ import java.io.Serializable;
 @Schema(description = "地区更新对象")
 public class RegionUpdateCmd implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     @Schema(description = "地区编码")
     private String code;

@@ -16,17 +16,16 @@
 
 package com.taotao.cloud.payment.application.dto.role.cmmond;
 
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import java.io.Serial;
+import java.io.Serializable;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 /**
  * 角色添加对象
@@ -45,8 +44,7 @@ import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 @Schema(description = "角色添加对象")
 public class RoleSaveCmd implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     @Schema(description = "角色名称", requiredMode = REQUIRED)
     @NotBlank(message = "角色名称不能超过为空")

@@ -26,4 +26,5 @@ import com.taotao.cloud.payment.infrastructure.persistent.persistence.system.Rol
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-public interface IRoleResourceRepository extends BaseInterfaceSuperRepository<RoleResourcePO, Long> {}
+public interface IRoleResourceRepository
+        extends BaseInterfaceSuperRepository<RoleResourcePO, Long> {}

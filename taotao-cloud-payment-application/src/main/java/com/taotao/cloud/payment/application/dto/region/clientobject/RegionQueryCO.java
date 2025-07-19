@@ -17,11 +17,10 @@
 package com.taotao.cloud.payment.application.dto.region.clientobject;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 地区查询对象
@@ -40,8 +39,7 @@ import java.io.Serializable;
 @Schema(description = "地区查询对象")
 public class RegionQueryCO implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 5126530068827085130L;
+    @Serial private static final long serialVersionUID = 5126530068827085130L;
 
     @Schema(description = "地区编码")
     private String code;

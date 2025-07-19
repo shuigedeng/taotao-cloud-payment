@@ -35,6 +35,7 @@ public enum PaymentMethodEnum {
 
     /** 插件id 调用对象，需要实现payment接口 */
     private final String plugin;
+
     /** 支付名称 */
     private final String paymentName;
 

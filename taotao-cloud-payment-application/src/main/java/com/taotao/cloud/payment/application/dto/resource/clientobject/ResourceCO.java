@@ -17,11 +17,10 @@
 package com.taotao.cloud.payment.application.dto.resource.clientobject;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 菜单DTO
@@ -39,8 +38,7 @@ import java.io.Serializable;
 @Schema(description = "菜单DTO")
 public class ResourceCO implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     @Schema(description = "菜单DTO")
     private Integer menuId;

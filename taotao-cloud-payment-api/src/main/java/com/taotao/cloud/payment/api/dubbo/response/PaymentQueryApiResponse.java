@@ -20,11 +20,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serial;
 import java.io.Serializable;
 import lombok.*;
-import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.*;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.*;
 
 /**
  * 公司查询VO
@@ -34,15 +33,14 @@ import lombok.NoArgsConstructor;
  * @since 2021-10-09 16:31:52
  */
 @Data
-@Accessors(chain=true)
+@Accessors(chain = true)
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(description = "公司查询VO")
 public class PaymentQueryApiResponse implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     private Long id;
 

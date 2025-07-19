@@ -18,11 +18,10 @@ package com.taotao.cloud.payment.api.model.query;
 
 import java.util.List;
 import lombok.*;
-import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.*;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.*;
 
 /**
  * EmailVo
@@ -32,7 +31,7 @@ import lombok.NoArgsConstructor;
  * @since 2022-03-22 09:25:30
  */
 @Data
-@Accessors(chain=true)
+@Accessors(chain = true)
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor

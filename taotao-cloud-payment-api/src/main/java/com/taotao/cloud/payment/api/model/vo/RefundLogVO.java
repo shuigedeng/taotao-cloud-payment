@@ -20,10 +20,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.*;
-import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.*;
 import lombok.NoArgsConstructor;
+import lombok.experimental.*;
 
 /**
  * 退款日志
@@ -31,7 +30,7 @@ import lombok.NoArgsConstructor;
  * @since 2021/1/28 09:21
  */
 @Data
-@Accessors(chain=true)
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class RefundLogVO {

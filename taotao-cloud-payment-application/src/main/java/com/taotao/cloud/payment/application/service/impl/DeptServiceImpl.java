@@ -27,23 +27,22 @@ import org.springframework.stereotype.Service;
  * @since 1.0
  */
 @Service
-public class DeptServiceImpl
-	implements DeptService {
+public class DeptServiceImpl implements DeptService {
 
-//	@Override
-//	public List<DeptTreeVO> tree() {
-//		LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<>();
-//		queryWrapper.orderByDesc(Dept::getSortNum);
-//		List<Dept> list = list(queryWrapper);
-//
-//		return DeptConvert.INSTANCE.convertTree(list)
-//			.stream()
-//			.filter(Objects::nonNull)
-//			.peek(e -> {
-//				e.setKey(e.getId());
-//				e.setValue(e.getId());
-//				e.setTitle(e.getName());
-//			})
-//			.toList();
-//	}
+    //	@Override
+    //	public List<DeptTreeVO> tree() {
+    //		LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<>();
+    //		queryWrapper.orderByDesc(Dept::getSortNum);
+    //		List<Dept> list = list(queryWrapper);
+    //
+    //		return DeptConvert.INSTANCE.convertTree(list)
+    //			.stream()
+    //			.filter(Objects::nonNull)
+    //			.peek(e -> {
+    //				e.setKey(e.getId());
+    //				e.setValue(e.getId());
+    //				e.setTitle(e.getName());
+    //			})
+    //			.toList();
+    //	}
 }

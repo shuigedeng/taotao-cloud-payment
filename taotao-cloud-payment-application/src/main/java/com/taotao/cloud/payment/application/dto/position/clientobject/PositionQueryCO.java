@@ -17,11 +17,10 @@
 package com.taotao.cloud.payment.application.dto.position.clientobject;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 岗位查询对象
@@ -40,8 +39,7 @@ import java.io.Serializable;
 @Schema(description = "岗位查询对象")
 public class PositionQueryCO implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     @Schema(description = "岗位名称")
     private String name;

@@ -28,13 +28,13 @@ import com.taotao.cloud.payment.infrastructure.persistent.persistence.dict.DictP
  */
 public interface DictMapper extends BaseSuperMapper<DictPO, Long> {
 
-//    @Select(
-//            """
-//		select dictPO.id as id,
-//		dictPO.description as description,
-//		dictPO.dict_name as itemValue,
-//		dictPO.dict_code as itemText
-//		from tt_dict dictPO
-//		""")
-//    List<DictPO> testMybatisQueryStructure(@Param("params") DictDeptParams params);
+    //    @Select(
+    //            """
+    //		select dictPO.id as id,
+    //		dictPO.description as description,
+    //		dictPO.dict_name as itemValue,
+    //		dictPO.dict_code as itemText
+    //		from tt_dict dictPO
+    //		""")
+    //    List<DictPO> testMybatisQueryStructure(@Param("params") DictDeptParams params);
 }

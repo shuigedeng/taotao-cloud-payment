@@ -17,7 +17,6 @@
 package com.taotao.cloud.payment.application.service;
 
 import com.taotao.boot.ddd.model.application.service.CommandService;
-
 import java.util.Set;
 
 /**

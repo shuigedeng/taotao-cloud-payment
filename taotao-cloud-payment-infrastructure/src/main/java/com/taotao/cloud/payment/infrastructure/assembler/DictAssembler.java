@@ -72,5 +72,5 @@ public interface DictAssembler {
      * @param dict dict
      * @since 2022-04-28 13:39:25
      */
-//    void copy(DictSaveDTO dictSaveDTO, @MappingTarget Dict dict);
+    //    void copy(DictSaveDTO dictSaveDTO, @MappingTarget Dict dict);
 }
