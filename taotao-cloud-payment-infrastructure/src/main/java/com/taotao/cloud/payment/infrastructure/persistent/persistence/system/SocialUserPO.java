@@ -18,7 +18,6 @@ package com.taotao.cloud.payment.infrastructure.persistent.persistence.system;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.taotao.boot.webagg.entity.BaseSuperEntity;
-import com.taotao.cloud.payment.api.enums.AuthUserGender;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -111,10 +110,10 @@ public class SocialUserPO extends BaseSuperEntity<SocialUserPO, Long> {
     /**
      * 性别
      */
-    @Schema(title = "性别")
-    @Column(name = "gender")
-    @Enumerated(EnumType.ORDINAL)
-    private AuthUserGender gender;
+//    @Schema(title = "性别")
+//    @Column(name = "gender")
+//    @Enumerated(EnumType.ORDINAL)
+//    private AuthUserGender gender;
 
     @Schema(title = "第三方用户来源")
     @Column(name = "source")
@@ -246,14 +245,6 @@ public class SocialUserPO extends BaseSuperEntity<SocialUserPO, Long> {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public AuthUserGender getGender() {
-        return gender;
-    }
-
-    public void setGender(AuthUserGender gender) {
-        this.gender = gender;
     }
 
     public String getSource() {

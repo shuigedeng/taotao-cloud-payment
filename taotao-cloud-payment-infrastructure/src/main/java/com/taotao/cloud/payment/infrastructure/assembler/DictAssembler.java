@@ -16,7 +16,6 @@
 
 package com.taotao.cloud.payment.infrastructure.assembler;
 
-import com.taotao.cloud.payment.api.feign.response.DictApiResponse;
 import com.taotao.cloud.payment.infrastructure.persistent.persistence.dict.DictPO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -34,7 +33,7 @@ public interface DictAssembler {
     /** 实例 */
     DictAssembler INSTANCE = Mappers.getMapper(DictAssembler.class);
 
-    DictApiResponse convert(DictPO dictPo);
+	DictPO convert(DictPO dictPo);
 
     /// **
     // * DictDTO转SysDict
