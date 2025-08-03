@@ -17,10 +17,9 @@
 package com.taotao.cloud.payment.application.dto.region.query;
 
 import com.taotao.boot.common.model.PageQuery;
+import java.util.List;
 import lombok.*;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 /**
  * EmailVo

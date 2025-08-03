@@ -17,11 +17,10 @@
 package com.taotao.cloud.payment.application.dto.dept.clientobject;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 部门查询对象
@@ -38,8 +37,7 @@ import java.io.Serializable;
 @Schema(description = "部门查询对象")
 public class DeptQueryCO implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     @Schema(description = "部门id", requiredMode = Schema.RequiredMode.REQUIRED)
     private Long deptId;

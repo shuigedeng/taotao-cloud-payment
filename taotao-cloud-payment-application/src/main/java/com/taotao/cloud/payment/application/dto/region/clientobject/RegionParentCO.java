@@ -17,12 +17,11 @@
 package com.taotao.cloud.payment.application.dto.region.clientobject;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * QueryRegionByParentIdVO
@@ -41,8 +40,7 @@ import java.util.List;
 @Schema(description = "查询应用列表数据VO")
 public class RegionParentCO implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 5126530068827085130L;
+    @Serial private static final long serialVersionUID = 5126530068827085130L;
 
     @Schema(description = "主键ID")
     private Long id;

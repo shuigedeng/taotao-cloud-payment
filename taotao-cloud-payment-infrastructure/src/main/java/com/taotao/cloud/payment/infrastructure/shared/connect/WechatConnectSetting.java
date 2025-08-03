@@ -16,9 +16,8 @@
 
 package com.taotao.cloud.payment.infrastructure.shared.connect;
 
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 /** 微信设置 */
 @Setter

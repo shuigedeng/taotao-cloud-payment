@@ -16,7 +16,6 @@
 
 package com.taotao.cloud.payment.api.constant;
 
-
 import static com.taotao.boot.common.constant.RuleConstants.THIRD_ERROR_TYPE_CODE;
 
 /**
@@ -29,7 +28,9 @@ import static com.taotao.boot.common.constant.RuleConstants.THIRD_ERROR_TYPE_COD
 public enum PinyinExceptionEnum {
 
     /** 字符不能转成汉语拼音 */
-    PARSE_ERROR(THIRD_ERROR_TYPE_CODE + PinyinConstants.PINYIN_EXCEPTION_STEP_CODE + "01", "拼音转化异常，具体信息：{}");
+    PARSE_ERROR(
+            THIRD_ERROR_TYPE_CODE + PinyinConstants.PINYIN_EXCEPTION_STEP_CODE + "01",
+            "拼音转化异常，具体信息：{}");
 
     /** 错误编码 */
     private final String errorCode;

@@ -16,14 +16,15 @@
 
 package com.taotao.cloud.payment.api.feign;
 
- import com.taotao.boot.common.constant.ServiceNameConstants;
+import com.taotao.boot.common.constant.ServiceNameConstants;
 import com.taotao.cloud.payment.api.feign.fallback.RefundLogApiFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
-	contextId = "RefundSupportApi",
-	fallbackFactory = RefundLogApiFallback.class)
+@FeignClient(
+        value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
+        contextId = "RefundSupportApi",
+        fallbackFactory = RefundLogApiFallback.class)
 public interface RefundSupportApi {
 
     @PostMapping("/refund")

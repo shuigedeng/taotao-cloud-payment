@@ -32,7 +32,11 @@ pluginManagement {
 
 plugins {
     //https://plugins.gradle.org/plugin/com.gradle.enterprise
+<<<<<<< HEAD
     id "com.gradle.develocity" version "4.0"
+=======
+    id "com.gradle.develocity" version "4.1"
+>>>>>>> dev
 }
 
 develocity {

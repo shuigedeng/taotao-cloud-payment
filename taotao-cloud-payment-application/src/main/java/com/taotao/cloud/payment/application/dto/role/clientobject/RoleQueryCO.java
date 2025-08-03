@@ -17,12 +17,11 @@
 package com.taotao.cloud.payment.application.dto.role.clientobject;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 角色查询对象
@@ -41,8 +40,7 @@ import java.time.LocalDateTime;
 @Schema(description = "角色查询对象")
 public class RoleQueryCO implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 5126530068827085130L;
+    @Serial private static final long serialVersionUID = 5126530068827085130L;
 
     @Schema(description = "id")
     private Long id;

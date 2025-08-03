@@ -17,11 +17,10 @@
 package com.taotao.cloud.payment.application.dto.user.cmmond;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 重复校验DTO
@@ -39,8 +38,7 @@ import java.io.Serializable;
 @Schema(description = "重复检查DTO")
 public class RepeatCheckCmd implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -4132785717179910025L;
+    @Serial private static final long serialVersionUID = -4132785717179910025L;
 
     @Schema(description = "字段值 邮箱 手机号 用户名", requiredMode = Schema.RequiredMode.REQUIRED)
     private String fieldVal;

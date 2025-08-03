@@ -53,27 +53,27 @@ import com.taotao.cloud.bootstrap.annotation.TaoTaoCloudApplication;
  * @version 2022.03
  * @since 2020/11/30 下午3:33
  */
-//@MapperScan(basePackages = {"com.taotao.cloud.payment.infrastructure.persistent.*.mapper"})
-//@EnableJpaRepositories(
+// @MapperScan(basePackages = {"com.taotao.cloud.payment.infrastructure.persistent.*.mapper"})
+// @EnableJpaRepositories(
 //	basePackages = {"com.taotao.cloud.payment.infrastructure.persistent.*.repository.inf"},
 //	repositoryFactoryBeanClass = JpaExtendRepositoryFactoryBean.class)
-//@ComponentScan(basePackages = {
+// @ComponentScan(basePackages = {
 //	"com.taotao.cloud.payment.biz.repository.cls"
-//} )
-//@EnableFeignClients(basePackages = {"com.taotao.cloud.payment.api.feign","com.taotao.cloud.payment.api.feign"})
+// } )
+// @EnableFeignClients(basePackages =
+// {"com.taotao.cloud.payment.api.feign","com.taotao.cloud.payment.api.feign"})
 @TaoTaoBootApplication
 @TaoTaoCloudApplication
 public class TaoTaoCloudPaymentApplication {
 
-	public static void main(String[] args) {
-		System.setProperty("com.google.protobuf.use_unsafe_pre22_gencode", "true");
+    public static void main(String[] args) {
+        System.setProperty("com.google.protobuf.use_unsafe_pre22_gencode", "true");
 
-		new StartupSpringApplication(TaoTaoCloudPaymentApplication.class)
-			.setTtcBanner()
-			.setTtcProfileIfNotExists("dev")
-			.setTtcApplicationProperty("taotao-cloud-payment")
-			.setTtcAllowBeanDefinitionOverriding(true)
-			.run(args);
-	}
-	
+        new StartupSpringApplication(TaoTaoCloudPaymentApplication.class)
+                .setTtcBanner()
+                .setTtcProfileIfNotExists("dev")
+                .setTtcApplicationProperty("taotao-cloud-payment")
+                .setTtcAllowBeanDefinitionOverriding(true)
+                .run(args);
+    }
 }

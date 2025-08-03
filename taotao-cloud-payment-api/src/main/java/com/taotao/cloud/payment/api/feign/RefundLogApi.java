@@ -16,7 +16,7 @@
 
 package com.taotao.cloud.payment.api.feign;
 
- import com.taotao.boot.common.constant.ServiceNameConstants;
+import com.taotao.boot.common.constant.ServiceNameConstants;
 import com.taotao.cloud.payment.api.feign.fallback.RefundLogApiFallback;
 import com.taotao.cloud.payment.api.model.vo.PayFlowVO;
 import com.taotao.cloud.payment.api.model.vo.RefundLogVO;
@@ -30,9 +30,10 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author shuigedeng
  * @since 2020/5/2 16:42
  */
-@FeignClient(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
-	contextId = "RefundLogApi",
-	fallbackFactory = RefundLogApiFallback.class)
+@FeignClient(
+        value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
+        contextId = "RefundLogApi",
+        fallbackFactory = RefundLogApiFallback.class)
 public interface RefundLogApi {
 
     @GetMapping("/pay/flow/info/id/{id:[0-9]*}")

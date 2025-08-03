@@ -29,7 +29,8 @@ import org.springframework.stereotype.Repository;
  * @since 2023-02-10 17:00:04
  */
 @Repository
-public class SocialUserRelationRepository extends BaseClassSuperRepository<SocialUserRelationPO, Long> {
+public class SocialUserRelationRepository
+        extends BaseClassSuperRepository<SocialUserRelationPO, Long> {
 
     public SocialUserRelationRepository(EntityManager em) {
         super(SocialUserRelationPO.class, em);

@@ -18,12 +18,11 @@ package com.taotao.cloud.payment.application.dto.resource.clientobject;
 
 import com.taotao.boot.common.tree.MapperNode;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * 树形菜单列表
@@ -42,8 +41,7 @@ import java.time.LocalDateTime;
 @Schema(description = "树形菜单列表")
 public class MenuTreeCO extends MapperNode implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -5853343562172855421L;
+    @Serial private static final long serialVersionUID = -5853343562172855421L;
 
     @Schema(description = "图标")
     private String icon;

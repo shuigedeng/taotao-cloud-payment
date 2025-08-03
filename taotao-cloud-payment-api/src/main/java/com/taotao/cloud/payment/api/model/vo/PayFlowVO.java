@@ -22,10 +22,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.*;
-import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.*;
 import lombok.NoArgsConstructor;
+import lombok.experimental.*;
 
 /**
  * 支付流水信息VO
@@ -35,13 +34,12 @@ import lombok.NoArgsConstructor;
  * @since 2020/11/20 上午9:42
  */
 @Data
-@Accessors(chain=true)
+@Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(description = "支付流水信息VO")
 public class PayFlowVO implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 5126530068827085130L;
+    @Serial private static final long serialVersionUID = 5126530068827085130L;
 
     @Schema(description = "id")
     private Long id;
