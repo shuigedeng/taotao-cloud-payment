@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.infrastructure.persistent.repository.inf;
+package com.taotao.cloud.payment.infrastructure.persistent.repository;
 
-import com.taotao.boot.webagg.repository.BaseInterfaceSuperRepository;
-import com.taotao.cloud.payment.infrastructure.persistent.persistence.system.UserPO;
+import com.taotao.cloud.payment.infrastructure.persistent.persistence.system.ServiceNoticePO;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * CompanyMapper
@@ -26,4 +26,4 @@ import com.taotao.cloud.payment.infrastructure.persistent.persistence.system.Use
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-public interface IUserRepository extends BaseInterfaceSuperRepository<UserPO, Long> {}
+public interface IServiceNoticeRepository extends JpaRepository<ServiceNoticePO, Long> {}

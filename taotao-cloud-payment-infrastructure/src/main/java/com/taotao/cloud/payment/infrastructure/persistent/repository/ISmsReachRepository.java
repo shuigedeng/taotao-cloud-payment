@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.infrastructure.persistent.repository.inf;
+package com.taotao.cloud.payment.infrastructure.persistent.repository;
 
-import com.taotao.boot.webagg.repository.BaseInterfaceSuperRepository;
-import com.taotao.cloud.payment.infrastructure.persistent.persistence.config.LogisticsConfigPO;
+import com.taotao.cloud.payment.infrastructure.persistent.persistence.sms.SmsReachPO;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * CompanyMapper
@@ -26,5 +26,4 @@ import com.taotao.cloud.payment.infrastructure.persistent.persistence.config.Log
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-public interface ILogisticsRepository
-        extends BaseInterfaceSuperRepository<LogisticsConfigPO, Long> {}
+public interface ISmsReachRepository extends JpaRepository<SmsReachPO, Long> {}

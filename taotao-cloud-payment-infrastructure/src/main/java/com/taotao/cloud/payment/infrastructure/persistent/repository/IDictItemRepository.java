@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.infrastructure.persistent.repository.cls;
+package com.taotao.cloud.payment.infrastructure.persistent.repository;
 
-import com.taotao.boot.webagg.repository.BaseClassSuperRepository;
-import com.taotao.cloud.payment.infrastructure.persistent.persistence.system.ServiceNoticePO;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
+import com.taotao.boot.data.jpa.base.repository.JpaSuperRepository;
+import com.taotao.cloud.payment.infrastructure.persistent.persistence.dict.DictItemPO;
 
 /**
  * CompanyMapper
@@ -29,11 +26,4 @@ import org.springframework.stereotype.Repository;
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-@Repository
-public class ServiceNoticeRepository extends BaseClassSuperRepository<ServiceNoticePO, Long> {
-    @PersistenceContext private EntityManager em;
-
-    public ServiceNoticeRepository(EntityManager em) {
-        super(ServiceNoticePO.class, em);
-    }
-}
+public interface IDictItemRepository extends JpaSuperRepository<DictItemPO, Long> {}

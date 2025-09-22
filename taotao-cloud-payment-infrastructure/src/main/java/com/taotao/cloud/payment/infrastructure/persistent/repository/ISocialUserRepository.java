@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.infrastructure.persistent.repository.cls;
+package com.taotao.cloud.payment.infrastructure.persistent.repository;
 
-import com.taotao.boot.webagg.repository.BaseClassSuperRepository;
-import com.taotao.cloud.payment.infrastructure.persistent.persistence.file.FilePO;
-import jakarta.persistence.EntityManager;
-import org.springframework.stereotype.Repository;
+import com.taotao.boot.data.jpa.base.repository.JpaSuperRepository;
+import com.taotao.cloud.payment.infrastructure.persistent.persistence.system.SocialUserPO;
 
 /**
  * CompanyMapper
@@ -28,10 +26,4 @@ import org.springframework.stereotype.Repository;
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-@Repository
-public class FileRepository extends BaseClassSuperRepository<FilePO, Long> {
-
-    public FileRepository(EntityManager em) {
-        super(FilePO.class, em);
-    }
-}
+public interface ISocialUserRepository extends JpaSuperRepository<SocialUserPO, Long> {}
