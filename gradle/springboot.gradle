@@ -1,6 +1,6 @@
 apply plugin: 'application'
 
-//https://docs.spring.io/spring-boot/docs/3.5.4/gradle-plugin/reference/htmlsingle/
+//https://docs.spring.io/spring-boot/docs/3.5.6/gradle-plugin/reference/htmlsingle/
 apply plugin: 'org.springframework.boot'
 
 /* 依赖管理，用来传递spring的依赖 */
@@ -35,6 +35,8 @@ bootJar {
     //excludes = ["*.jar"]
     // lib目录的清除和复制任务
     //dependsOn copyJar
+
+    archiveBaseName = "taotao-cloud-payment"
 
     manifest {
         attributes project.tasks.jar.manifest.attributes
@@ -112,7 +114,7 @@ bootBuildImage {
     environment = [
             "BPL_SPRING_CLOUD_BINDINGS_ENABLED": "true",
 
-            "BP_IMAGE_LABELS"                  : "application_name=taotao-cloud-monitor application_version=2025.08",
+            "BP_IMAGE_LABELS"                  : "application_name=taotao-cloud-monitor application_version=2025.10",
             "BP_OCI_AUTHORS"                   : "981376577@qq.com",
             //"BP_OCI_CREATED": " ",
             //"BP_OCI_DESCRIPTION": " ",
@@ -127,7 +129,7 @@ bootBuildImage {
             //"BP_OCI_VERSION": " ",
 
             "BPE_APPLICATION_NAME"             : "taotao-cloud-monitor",
-            "BPE_APPLICATION_VERSION"          : "2025.08",
+            "BPE_APPLICATION_VERSION"          : "2025.10",
             "BPE_JMX_ENABLED"                  : "true",
             "BPE_LANG"                         : "zh_CN.UTF-8",
             "BPE_JMX_PORT"                     : "5000",

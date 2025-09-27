@@ -16,7 +16,7 @@
 
 package com.taotao.cloud.payment.infrastructure.persistent.mapper;
 
-import com.taotao.boot.webagg.mapper.BaseSuperMapper;
+import com.taotao.boot.data.mybatis.mybatisplus.base.mapper.MpSuperMapper;
 import com.taotao.cloud.payment.infrastructure.persistent.persistence.sms.SmsSignPO;
 
 /**
@@ -26,4 +26,4 @@ import com.taotao.cloud.payment.infrastructure.persistent.persistence.sms.SmsSig
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-public interface SmsSignMapper extends BaseSuperMapper<SmsSignPO, Long> {}
+public interface SmsSignMapper extends MpSuperMapper<SmsSignPO, Long> {}

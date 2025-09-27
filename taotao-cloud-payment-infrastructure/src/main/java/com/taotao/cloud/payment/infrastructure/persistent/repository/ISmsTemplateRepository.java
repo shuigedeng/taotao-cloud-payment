@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.infrastructure.persistent.repository.cls;
+package com.taotao.cloud.payment.infrastructure.persistent.repository;
 
-import com.taotao.boot.webagg.repository.BaseClassSuperRepository;
 import com.taotao.cloud.payment.infrastructure.persistent.persistence.sms.SmsTemplatePO;
-import jakarta.persistence.EntityManager;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * CompanyMapper
@@ -28,10 +26,4 @@ import org.springframework.stereotype.Repository;
  * @version 2022.03
  * @since 2021/10/13 22:50
  */
-@Repository
-public class SmsTemplateRepository extends BaseClassSuperRepository<SmsTemplatePO, Long> {
-
-    public SmsTemplateRepository(EntityManager em) {
-        super(SmsTemplatePO.class, em);
-    }
-}
+public interface ISmsTemplateRepository extends JpaRepository<SmsTemplatePO, Long> {}

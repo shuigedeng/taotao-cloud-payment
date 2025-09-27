@@ -6,15 +6,17 @@ apply from: rootProject.file('gradle/smart-doc.gradle')
 apply from: rootProject.file('gradle/springdoc-openapi.gradle')
 apply from: rootProject.file('gradle/docker.gradle')
 apply from: rootProject.file('gradle/google-tools-jib.gradle')
-//apply from: rootProject.file('gradle/shadow.gradle')
+apply from: rootProject.file('gradle/shadow.gradle')
 //apply from: rootProject.file('gradle/graalvm.gradle')
 apply from: rootProject.file('gradle/swagger.gradle')
 apply from: rootProject.file('gradle/test.gradle')
 apply from: rootProject.file('gradle/mybatis-generator.gradle')
 
-//mainClassName = "com.taotao.cloud.payment.TaoTaoCloudsysApplication"
+application {
+    mainClass.set("com.taotao.cloud.payment.TaoTaoCloudPaymentApplication")
+    applicationName = "taotao-cloud-payment"
+}
 description = "商品中心"
-//archivesBaseName = 'taotao-cloud-payment'
 
 dependencies {
     api project(":taotao-cloud-payment-facade")
@@ -31,11 +33,11 @@ dependencies {
 
     testImplementation "io.github.shuigedeng:taotao-boot-starter-test"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.3'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.13.3'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.13.3'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.3'
-    testImplementation "org.assertj:assertj-core:3.27.3"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.13.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.13.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
+    testImplementation "org.assertj:assertj-core:3.27.6"
 
     testImplementation "org.projectlombok:lombok"
     testAnnotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
@@ -47,7 +49,7 @@ dependencies {
     testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructProcessorVersion}"
     //https://github.com/entur/mapstruct-spi-protobuf
     //https://search.maven.org/artifact/no.entur.mapstruct.spi/protobuf-spi-impl
-    testAnnotationProcessor "no.entur.mapstruct.spi:protobuf-spi-impl:1.49.0"
+    testAnnotationProcessor "no.entur.mapstruct.spi:protobuf-spi-impl:1.52.0"
 }
 
 
@@ -145,9 +147,9 @@ configurations {
         resolutionStrategy {
             force "org.codehaus.groovy:groovy:3.0.25"
             force 'org.antlr:antlr4:4.13.2'
-            force 'net.minidev:json-smart:2.5.2'
+            force 'net.minidev:json-smart:2.6.0'
             //todo 临时使用
-            force "io.opentelemetry:opentelemetry-api-incubator:1.52.0-alpha"
+            force "io.opentelemetry:opentelemetry-api-incubator:1.54.1-alpha"
         }
 
         //exclude group: "log4j", module: "log4j"

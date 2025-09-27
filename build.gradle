@@ -27,12 +27,12 @@ buildscript {
         ttcVersion = version
         ttcGroup = "io.github.shuigedeng"
 
-        springBootVersion = "3.5.4"
+        springBootVersion = "3.5.6"
         querydslAptVersion = "5.1.0"
         mapstructProcessorVersion = "1.6.3"
         lombokMapstructBindingVersion = "0.2.0"
-        lombokVersion = "1.18.38"
-        recordBuilderVersion = "47"
+        lombokVersion = "1.18.42"
+        recordBuilderVersion = "49"
     }
 
     repositories {
@@ -90,7 +90,7 @@ buildscript {
         /* 添加插件依赖路径（通过jar方式） */
 
         //https://plugins.gradle.org/m2/com/github/spotbugs/snom/spotbugs-gradle-plugin/
-        classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.2.2"
+        classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.4.2"
 
         //https://github.com/spring-io/spring-javaformat/
         classpath "io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.47"
@@ -150,29 +150,29 @@ plugins {
 
     //smart-doc gradle 插件
     // https://plugins.gradle.org/plugin/com.ly.smart-doc
-    id "com.ly.smart-doc" version "3.1.1"
+    id "com.ly.smart-doc" version "3.1.2"
 
     //OWASP 依赖检查插件。
     //https://plugins.gradle.org/plugin/org.owasp.dependencycheck
-    id "org.owasp.dependencycheck" version "12.1.3"
+    id "org.owasp.dependencycheck" version "12.1.6"
 
     //用于管理 Docker 镜像和容器的 Gradle 插件。
     //https://plugins.gradle.org/plugin/com.bmuschko.docker-spring-boot-application
     id "com.bmuschko.docker-spring-boot-application" version "9.4.0"
 
     //Gradle 插件，用于将所有依赖项和项目代码折叠到一个 Jar 文件中。
-    //https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow
-    //id "com.github.johnrengelman.shadow" version "8.1.1"
+    //https://plugins.gradle.org/plugin/com.gradleup.shadow
+    id "com.gradleup.shadow" version "9.2.1"
 
     //用于运行 SonarQube 分析的 Gradle 插件。
     //https://plugins.gradle.org/plugin/org.sonarqube
-    id "org.sonarqube" version "6.2.0.5505"
+    id "org.sonarqube" version "6.3.1.5724"
 
     //Spring Boot 可以轻松创建独立的、生产级的基于 Spring 的应用程序，您可以“直接运行”
     // 我们对 Spring 平台和第三方库持固执己见的看法，
     // 大多数 Spring Boot 应用程序只需要很少的 Spring 配置
     //https://plugins.gradle.org/plugin/org.springframework.boot
-    id "org.springframework.boot" version "3.5.4"
+    id "org.springframework.boot" version "3.5.6"
 
     //一个 Gradle 插件，提供类似 Maven 的依赖管理功能
     //https://plugins.gradle.org/plugin/io.spring.dependency-management
@@ -184,13 +184,13 @@ plugins {
 
     //https://github.com/diffplug/spotless/blob/main/plugin-gradle/README.md
     //https://plugins.gradle.org/plugin/com.diffplug.spotless
-    id "com.diffplug.spotless" version "7.1.0"
+    id "com.diffplug.spotless" version "8.0.0"
 
     //https://plugins.gradle.org/plugin/com.gorylenko.gradle-git-properties
-    id "com.gorylenko.gradle-git-properties" version "2.5.2"
+    id "com.gorylenko.gradle-git-properties" version "2.5.3"
 
     //https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
-    id 'org.graalvm.buildtools.native' version '0.10.6'
+    id 'org.graalvm.buildtools.native' version '0.11.1'
 
     //https://github.com/kimichen13/mybatis-generator-plugin
     //https://plugins.gradle.org/plugin/com.qqviaja.gradle.MybatisGenerator
@@ -228,7 +228,7 @@ allprojects {
     // 统一group和version
     //group = "com.terra.ns.imp"
     //version = pLibs.versions.imp.service.get()
-    //java.sourceCompatibility = JavaVersion.VERSION_21
+    //java.sourceCompatibility = JavaVersion.VERSION_25
 
     //dependencies {
     //    // bom 管理着一组依赖的版本，各模块按需引入其中的依赖即可，由bom统一约束着版本，
@@ -238,11 +238,11 @@ allprojects {
 
     java {
         /* 指定jdk版本 */
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_25
+        targetCompatibility = JavaVersion.VERSION_25
 
         toolchain {
-            languageVersion = JavaLanguageVersion.of(21)
+            languageVersion = JavaLanguageVersion.of(25)
         }
     }
 
@@ -257,7 +257,7 @@ allprojects {
     }
     javadoc.options {
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '21')
+        addStringOption('-release', '25')
     }
 
     /* java编译的时候缺省状态下会因为中文字符而失败 */
@@ -359,7 +359,7 @@ subprojects {
         annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructProcessorVersion}"
         //https://github.com/entur/mapstruct-spi-protobuf
         //https://search.maven.org/artifact/no.entur.mapstruct.spi/protobuf-spi-impl
-        annotationProcessor "no.entur.mapstruct.spi:protobuf-spi-impl:1.49.0"
+        annotationProcessor "no.entur.mapstruct.spi:protobuf-spi-impl:1.52.0"
 
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
     }
@@ -374,15 +374,15 @@ subprojects {
             exclude group: 'com.vaadin.external.google', module: 'android-json'
 
             resolutionStrategy {
-                force 'net.minidev:json-smart:2.5.2'
+                force 'net.minidev:json-smart:2.6.0'
                 //https://search.maven.org/artifact/com.google.protobuf/protobuf-java
                 force "com.google.protobuf:protobuf-java:3.25.6"
                 //https://search.maven.org/artifact/com.google.protobuf/protobuf-java-util
                 force "com.google.protobuf:protobuf-java-util:3.25.6"
                 force "com.google.protobuf:protobuf-javalite:3.25.6"
-                force "org.glassfish.jaxb:jaxb-runtime:4.0.5"
-                force "org.glassfish.jaxb:jaxb-core:4.0.5"
-                force "org.glassfish.jaxb:jaxb-xjc:4.0.5"
+                force "org.glassfish.jaxb:jaxb-runtime:4.0.6"
+                force "org.glassfish.jaxb:jaxb-core:4.0.6"
+                force "org.glassfish.jaxb:jaxb-xjc:4.0.6"
             }
         }
 
@@ -428,14 +428,14 @@ subprojects {
             author true
             version true
             title project.name
-            links "https://docs.oracle.com/en/java/javase/21/docs/api"
+            links "https://docs.oracle.com/en/java/javase/25/docs/api"
         }
 
         options.addStringOption('Xdoclint:none', '-quiet')
         options.addStringOption('encoding', 'UTF-8')
         options.addStringOption('charSet', 'UTF-8')
         options.addBooleanOption('-enable-preview', true)
-        options.addStringOption('-release', '21')
+        options.addStringOption('-release', '25')
 
         if(JavaVersion.current().isJava9Compatible()) {
             options.addBooleanOption('html5', true)
@@ -533,7 +533,7 @@ subprojects {
                     'Built-By': 'shuigedeng',
                     'Automatic-Module-Name': project.name.replace("-", "."),
                     'Implementation-URL': "https://github.com/shuigedeng/taotao-cloud-project",
-                    'Build-Jdk-Spec': JavaVersion.VERSION_21.toString(),
+                    'Build-Jdk-Spec': JavaVersion.VERSION_25.toString(),
                     'Bundle-DocURL': 'https://github.com/shuigedeng/taotao-cloud-project',
                     'Built-Gradle': gradle.gradleVersion,
                     'Build-OS': System.getProperty("os.name"),
@@ -610,12 +610,12 @@ subprojects {
             url = "https://github.com/shuigedeng/taotao-cloud-project.git"
 
             properties = [
-                    "java.version": JavaVersion.VERSION_21.toString(),
-                    "maven.compiler.source": JavaVersion.VERSION_21.toString(),
-                    "maven.compiler.target": JavaVersion.VERSION_21.toString(),
+                    "java.version": JavaVersion.VERSION_25.toString(),
+                    "maven.compiler.source": JavaVersion.VERSION_25.toString(),
+                    "maven.compiler.target": JavaVersion.VERSION_25.toString(),
                     "project.build.sourceEncoding": "UTF-8",
                     "project.reporting.outputEncoding": "UTF-8",
-                    "spring-boot-dependencies.version"   : "3.5.4",
+                    "spring-boot-dependencies.version"   : "3.5.6",
                     "taotao-cloud-dependencies.version"   : rootProject.version,
                     "taotao-boot-dependencies.version"   : rootProject.version
             ]
