@@ -16,7 +16,7 @@
 
 package com.taotao.cloud.payment.application.dto.email.query;
 
-import com.taotao.boot.common.model.PageQuery;
+import com.taotao.boot.common.model.request.PageQuery;
 import java.util.List;
 import lombok.*;
 import lombok.experimental.Accessors;
