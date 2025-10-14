@@ -24,7 +24,7 @@ import com.taotao.boot.idempotent.annotation.Idempotent;
 
 import com.taotao.boot.security.spring.annotation.NotAuth;
 import com.taotao.boot.web.request.annotation.RequestLogger;
-import com.taotao.boot.webagg.controller.ApiController;
+import com.taotao.boot.webagg.controller.FeignController;
 import com.taotao.cloud.payment.application.service.DictService;
 import com.yomahub.tlog.core.annotation.TLogAspect;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RestController
 @RequestMapping
-public class DictApiImpl extends ApiController  {
+public class DictApiImpl extends FeignController  {
 
     @Autowired private DictService dictService;
 
