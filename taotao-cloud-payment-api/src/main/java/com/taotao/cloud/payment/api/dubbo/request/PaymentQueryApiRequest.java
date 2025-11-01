@@ -16,6 +16,7 @@
 
 package com.taotao.cloud.payment.api.dubbo.request;
 
+import com.taotao.boot.common.model.request.RequestBase;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -35,7 +36,7 @@ import lombok.experimental.*;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentQueryApiRequest implements Serializable {
+public class PaymentQueryApiRequest extends RequestBase implements Serializable {
 
     @Serial private static final long serialVersionUID = 5126530068827085130L;
 

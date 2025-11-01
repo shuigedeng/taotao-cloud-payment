@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.api.constant;
 
 /** 代码生成通用常量 */
-public interface GenConstants {
+public interface PaymentConstants {
 
     /** 单表（增删改查） */
     String TPL_CRUD = "crud";
