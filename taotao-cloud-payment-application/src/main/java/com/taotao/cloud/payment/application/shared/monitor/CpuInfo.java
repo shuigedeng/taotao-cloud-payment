@@ -20,7 +20,6 @@ import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.dromara.hutool.core.math.NumberUtil;
 
 /**
  * CPU相关信息

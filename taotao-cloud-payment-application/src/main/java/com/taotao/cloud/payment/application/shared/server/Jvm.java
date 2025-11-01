@@ -16,12 +16,9 @@
 
 package com.taotao.cloud.payment.application.shared.server;
 
-import static org.dromara.hutool.core.date.DateFormatPool.NORM_DATETIME_FORMAT;
 
 import java.lang.management.ManagementFactory;
 import java.util.Date;
-import org.dromara.hutool.core.date.DateUnit;
-import org.dromara.hutool.core.date.DateUtil;
 
 /**
  * JVM相关信息

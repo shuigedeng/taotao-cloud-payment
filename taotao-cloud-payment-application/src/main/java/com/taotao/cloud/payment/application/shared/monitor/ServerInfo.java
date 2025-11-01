@@ -24,7 +24,6 @@ import java.util.Properties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.dromara.hutool.core.math.NumberUtil;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.CentralProcessor.TickType;
 import oshi.hardware.GlobalMemory;
