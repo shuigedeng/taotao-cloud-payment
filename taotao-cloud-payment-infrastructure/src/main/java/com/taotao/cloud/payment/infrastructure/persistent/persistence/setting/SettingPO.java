@@ -69,7 +69,7 @@ public class SettingPO extends BaseSuperEntity<SettingPO, Long> {
             columnDefinition = "varchar(255) not null comment '编码'")
     private String enCode;
 
-    @Type(value = JsonType.class)
+    //@Type(value = JsonType.class)
     @TableField(typeHandler = JacksonTypeHandler.class)
     @Column(name = "`value`", columnDefinition = "json not null comment 'json数据'")
     private String value;
