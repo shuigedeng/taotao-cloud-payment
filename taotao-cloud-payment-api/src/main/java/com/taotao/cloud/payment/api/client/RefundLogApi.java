@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.feign;
+package com.taotao.cloud.payment.api.client;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.feign.fallback.RefundLogApiFallback;
-import org.springframework.cloud.openfeign.FeignClient;
+import com.taotao.cloud.payment.api.client.fallback.RefundLogApiFallback;
+import com.taotao.cloud.payment.api.model.vo.PayFlowVO;
+import com.taotao.cloud.payment.api.model.vo.RefundLogVO;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.HttpExchange;
 
 /**
  * 远程调用快递公司模块
@@ -26,8 +30,12 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @author shuigedeng
  * @since 2020/5/2 16:42
  */
-@FeignClient(
-        value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
-        contextId = "PaymentRefundApi",
-        fallbackFactory = RefundLogApiFallback.class)
-public interface PaymentRefundApi {}
+@HttpExchange(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT)
+public interface RefundLogApi {
+
+    @GetExchange("/pay/flow/info/id/{id:[0-9]*}")
+    PayFlowVO findPayFlowById(@PathVariable(value = "id") Long id);
+
+    @GetExchange("/RefundLogVO")
+    RefundLogVO queryByAfterSaleSn(String sn);
+}

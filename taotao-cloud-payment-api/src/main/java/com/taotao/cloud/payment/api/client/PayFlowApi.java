@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.feign;
+package com.taotao.cloud.payment.api.client;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.feign.fallback.PayFlowApiFallback;
+import com.taotao.cloud.payment.api.client.fallback.PayFlowApiFallback;
 import com.taotao.cloud.payment.api.model.vo.PayFlowVO;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.HttpExchange;
 
 /**
  * 远程调用快递公司模块
@@ -29,10 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author shuigedeng
  * @since 2020/5/2 16:42
  */
-@FeignClient(
-        value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT,
-        contextId = "PayFlowApi",
-        fallbackFactory = PayFlowApiFallback.class)
+@HttpExchange(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT)
 public interface PayFlowApi {
 
     /**
@@ -42,6 +39,6 @@ public interface PayFlowApi {
      * @return 支付信息
      * @since 2020/11/20 上午10:45
      */
-    @GetMapping("/pay/flow/info/id/{id:[0-9]*}")
+    @GetExchange("/pay/flow/info/id/{id:[0-9]*}")
     PayFlowVO findPayFlowById(@PathVariable(value = "id") Long id);
 }

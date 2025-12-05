@@ -14,28 +14,16 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.feign.fallback;
+package com.taotao.cloud.payment.api.client;
 
-import com.taotao.cloud.payment.api.feign.PayFlowApi;
-import com.taotao.cloud.payment.api.model.vo.PayFlowVO;
-import org.springframework.cloud.openfeign.FallbackFactory;
+import com.taotao.boot.common.constant.ServiceNameConstants;
+import com.taotao.cloud.payment.api.client.fallback.RefundLogApiFallback;
+import org.springframework.web.service.annotation.HttpExchange;
+import org.springframework.web.service.annotation.PostExchange;
 
-/**
- * RemoteLogFallbackImpl
- *
- * @author shuigedeng
- * @since 2020/4/29 21:43
- */
-public class PayFlowApiFallback implements FallbackFactory<PayFlowApi> {
+@HttpExchange(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT)
+public interface RefundSupportApi {
 
-    @Override
-    public PayFlowApi create(Throwable throwable) {
-        return new PayFlowApi() {
-
-            @Override
-            public PayFlowVO findPayFlowById(Long id) {
-                return null;
-            }
-        };
-    }
+    @PostExchange("/refund")
+    void refund(String sn);
 }
