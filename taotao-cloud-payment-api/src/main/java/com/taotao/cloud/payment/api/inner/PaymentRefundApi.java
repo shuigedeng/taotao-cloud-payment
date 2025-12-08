@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.client;
+package com.taotao.cloud.payment.api.inner;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.client.fallback.RefundLogApiFallback;
 import org.springframework.web.service.annotation.HttpExchange;
 
 /**

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.client;
+package com.taotao.cloud.payment.api.inner;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.client.fallback.PayFlowApiFallback;
 import com.taotao.cloud.payment.api.model.vo.PayFlowVO;
+import com.taotao.cloud.payment.api.model.vo.RefundLogVO;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
@@ -30,15 +30,11 @@ import org.springframework.web.service.annotation.HttpExchange;
  * @since 2020/5/2 16:42
  */
 @HttpExchange(value = ServiceNameConstants.TAOTAO_CLOUD_PAYMENT)
-public interface PayFlowApi {
+public interface RefundLogApi {
 
-    /**
-     * 根据id查询支付信息
-     *
-     * @param id id
-     * @return 支付信息
-     * @since 2020/11/20 上午10:45
-     */
     @GetExchange("/pay/flow/info/id/{id:[0-9]*}")
     PayFlowVO findPayFlowById(@PathVariable(value = "id") Long id);
+
+    @GetExchange("/RefundLogVO")
+    RefundLogVO queryByAfterSaleSn(String sn);
 }
