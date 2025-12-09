@@ -1388,7 +1388,7 @@ logging:
   level:
     root: INFO
     org.apache.zookeeper.ZooKeeper: error
-    com.taotao.cloud.payment.api.client: debug
+    com.taotao.cloud.payment.api.inner: debug
     #org.springframework.cloud.openfeign: debug
     #org.springframework.web: off
     #org.springframework.security: off
