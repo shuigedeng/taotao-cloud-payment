@@ -17,14 +17,23 @@
 package com.taotao.cloud.payment.application.configuration.aop.execl;
 
 import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * ExcelUploadLog
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
 @Setter
 @Getter
 @ToString
 public class ExcelUploadLog {
+
     private Integer id;
     // 唯一编码
     private String batchNo;

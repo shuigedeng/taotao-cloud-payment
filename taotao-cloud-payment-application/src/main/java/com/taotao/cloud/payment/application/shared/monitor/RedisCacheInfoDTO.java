@@ -18,10 +18,18 @@ package com.taotao.cloud.payment.application.shared.monitor;
 
 import java.util.List;
 import java.util.Properties;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * RedisCacheInfoDTO
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
 @Setter
 @Getter
 @ToString
@@ -35,6 +43,7 @@ public class RedisCacheInfoDTO {
     @Getter
     @ToString
     public static class CommonStatusDTO {
+
         private String name;
         private String value;
     }

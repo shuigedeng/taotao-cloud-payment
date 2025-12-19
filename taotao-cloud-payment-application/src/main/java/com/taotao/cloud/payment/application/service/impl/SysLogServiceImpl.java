@@ -19,5 +19,14 @@ package com.taotao.cloud.payment.application.service.impl;
 import com.taotao.cloud.payment.application.service.SysLogService;
 import org.springframework.stereotype.Service;
 
+/**
+ * SysLogServiceImpl
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
 @Service
-public class SysLogServiceImpl implements SysLogService {}
+public class SysLogServiceImpl implements SysLogService {
+
+}

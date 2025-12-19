@@ -21,16 +21,26 @@ import com.taotao.cloud.payment.domain.dept.repository.DeptDomainRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * DeptDomainRepositoryImpl
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
 @Service
 @AllArgsConstructor
 public class DeptDomainRepositoryImpl implements DeptDomainRepository {
 
     @Override
-    public void create(DeptEntity dept) {}
+    public void create( DeptEntity dept ) {
+    }
 
     @Override
-    public void modify(DeptEntity dept) {}
+    public void modify( DeptEntity dept ) {
+    }
 
     @Override
-    public void remove(Long[] ids) {}
+    public void remove( Long[] ids ) {
+    }
 }

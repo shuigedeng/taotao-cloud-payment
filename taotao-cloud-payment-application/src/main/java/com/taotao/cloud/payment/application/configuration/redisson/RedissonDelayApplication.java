@@ -50,7 +50,7 @@ public class RedissonDelayApplication {
     public MessageConverter messageConverter() {
         return new MessageConverter() {
             @Override
-            public QueueMessage<?> toMessage(Object object, Map<String, Object> headers)
+            public QueueMessage<?> toMessage( Object object, Map<String, Object> headers )
                     throws MessageConversionException {
                 // do something you want, eg:
                 headers.put("my_header", "my_header_value");
@@ -58,7 +58,7 @@ public class RedissonDelayApplication {
             }
 
             @Override
-            public Object fromMessage(RedissonMessage redissonMessage)
+            public Object fromMessage( RedissonMessage redissonMessage )
                     throws MessageConversionException {
                 String payload = redissonMessage.getPayload();
                 String payloadStr = new String(payload);
@@ -74,14 +74,21 @@ public class RedissonDelayApplication {
             @Header(RedissonHeaders.SEND_TIMESTAMP) long sendTimestamp,
             @Header(RedissonHeaders.EXPECTED_DELAY_MILLIS) long expectedDelayMillis,
             @Header(value = "my_header", required = false, defaultValue = "test") String myHeader,
-            @Payload CarLbsDto carLbsDto) {
+            @Payload CarLbsDto carLbsDto ) {
         LogUtils.info(messageId);
         LogUtils.info(queue);
         LogUtils.info(myHeader);
-        long actualDelay = System.currentTimeMillis() - (sendTimestamp + expectedDelayMillis);
+        long actualDelay = System.currentTimeMillis() - ( sendTimestamp + expectedDelayMillis );
         LogUtils.info("receive " + carLbsDto + ", delayed " + actualDelay + " millis");
     }
 
+    /**
+     * CarLbsDto
+     *
+     * @author shuigedeng
+     * @version 2026.01
+     * @since 2025-12-19 09:30:45
+     */
     @Setter
     @Getter
     @ToString

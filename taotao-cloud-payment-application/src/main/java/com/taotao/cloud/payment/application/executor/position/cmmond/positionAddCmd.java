@@ -16,4 +16,13 @@
 
 package com.taotao.cloud.payment.application.executor.position.cmmond;
 
-public class positionAddCmd {}
+/**
+ * positionAddCmd
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
+public class positionAddCmd {
+
+}

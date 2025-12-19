@@ -24,6 +24,13 @@ import com.taotao.cloud.payment.domain.dict.service.DictDomainService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * DictDomainServiceImpl
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
 @Service
 @AllArgsConstructor
 public class DictDomainServiceImpl implements DictDomainService {
@@ -31,27 +38,27 @@ public class DictDomainServiceImpl implements DictDomainService {
     private DictDomainRepository dictDomainRepository;
 
     @Override
-    public Boolean insert(DictEntity dictEntity) {
+    public Boolean insert( DictEntity dictEntity ) {
         return null;
     }
 
     @Override
-    public Boolean update(DictEntity dictEntity) {
+    public Boolean update( DictEntity dictEntity ) {
         return null;
     }
 
     @Override
-    public DictEntity getById(Long id) {
+    public DictEntity getById( Long id ) {
         return null;
     }
 
     @Override
-    public Boolean deleteById(Long id) {
+    public Boolean deleteById( Long id ) {
         return null;
     }
 
     @Override
-    public IPage<DictEntity> list(DictEntity dictEntity, PageQuery pageQuery) {
+    public IPage<DictEntity> list( DictEntity dictEntity, PageQuery pageQuery ) {
         //		return dictRepository.list(dictEntity, pageQuery);
         return null;
     }

@@ -18,12 +18,14 @@ package com.taotao.cloud.payment.application.configuration.aop.execl;
 
 import com.taotao.boot.common.utils.date.DateUtils;
 import com.taotao.boot.common.utils.log.LogUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.*;
+
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,6 +34,13 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
+/**
+ * ExcelUploadAspect
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
 @Component
 @Aspect
 @Slf4j
@@ -54,10 +63,11 @@ public class ExcelUploadAspect {
                     new ThreadPoolExecutor.AbortPolicy());
 
     @Pointcut("@annotation(com.taotao.cloud.payment.biz.config.aop.execl.ExcelUpload)")
-    public void uploadPoint() {}
+    public void uploadPoint() {
+    }
 
     @Around(value = "uploadPoint()")
-    public Object uploadControl(ProceedingJoinPoint pjp) {
+    public Object uploadControl( ProceedingJoinPoint pjp ) {
         // 获取方法上的注解，进而获取uploadType
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         ExcelUpload annotation = signature.getMethod().getAnnotation(ExcelUpload.class);
@@ -89,7 +99,7 @@ public class ExcelUploadAspect {
         return new Object();
     }
 
-    private void fail(String message, String batchNo) {
+    private void fail( String message, String batchNo ) {
         // 生成上传错误日志文件的文件key
         String s3Key = UUID.randomUUID().toString().replace("-", "");
         // 生成文件名称

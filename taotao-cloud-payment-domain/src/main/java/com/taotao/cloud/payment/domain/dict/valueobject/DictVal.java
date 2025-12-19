@@ -16,4 +16,13 @@
 
 package com.taotao.cloud.payment.domain.dict.valueobject;
 
-public class DictVal {}
+/**
+ * DictVal
+ *
+ * @author shuigedeng
+ * @version 2026.01
+ * @since 2025-12-19 09:30:45
+ */
+public class DictVal {
+
+}
