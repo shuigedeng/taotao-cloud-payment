@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.application.service.impl;
 
 import com.taotao.cloud.payment.application.service.RegionService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-10-09 20:37:52
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RegionServiceImpl implements RegionService {
 
     //	private final OkHttpService okHttpService;

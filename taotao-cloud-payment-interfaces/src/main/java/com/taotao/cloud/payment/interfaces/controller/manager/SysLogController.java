@@ -18,7 +18,7 @@ package com.taotao.cloud.payment.interfaces.controller.manager;
 
 import com.taotao.boot.webagg.controller.BusinessController;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/sys/log")
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Tag(name = "工具管理端-日志管理模块", description = "工具管理端-日志管理模块")
 public class SysLogController extends BusinessController {
 

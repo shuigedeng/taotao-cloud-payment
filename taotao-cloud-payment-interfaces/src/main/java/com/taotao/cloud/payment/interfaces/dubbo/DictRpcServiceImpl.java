@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.interfaces.dubbo;
 
 import com.taotao.boot.common.utils.log.LogUtils;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-10-09 20:26:36
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 //@DubboService(interfaceClass = DictRpcService.class, validation = "true")
 public class DictRpcServiceImpl  {
 

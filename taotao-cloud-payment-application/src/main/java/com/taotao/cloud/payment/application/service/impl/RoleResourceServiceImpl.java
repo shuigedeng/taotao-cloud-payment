@@ -18,7 +18,7 @@ package com.taotao.cloud.payment.application.service.impl;
 
 import com.taotao.cloud.payment.application.service.RoleResourceService;
 import java.util.Set;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
  * @since 2020/10/21 09:48
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RoleResourceServiceImpl implements RoleResourceService {
 
     @Override

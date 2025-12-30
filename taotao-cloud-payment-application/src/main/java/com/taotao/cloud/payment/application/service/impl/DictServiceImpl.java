@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.application.service.impl;
 
 import com.taotao.cloud.payment.application.service.DictService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
  * @version 2021.10
  * @since 2021-10-09 20:26:36
  */
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class DictServiceImpl implements DictService {
 

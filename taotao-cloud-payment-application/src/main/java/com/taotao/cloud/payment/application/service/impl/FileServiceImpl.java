@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.application.service.impl;
 
 import com.taotao.cloud.payment.application.service.FileService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
  * @version 2022.03
  * @since 2020/11/12 17:43
  */
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class FileServiceImpl implements FileService {
     //

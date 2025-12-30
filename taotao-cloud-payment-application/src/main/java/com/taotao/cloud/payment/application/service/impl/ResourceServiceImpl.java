@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.application.service.impl;
 
 import com.taotao.cloud.payment.application.service.ResourceService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-10-09 20:41:23
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ResourceServiceImpl implements ResourceService {
 
     //	private final IRoleService roleService;
