@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.dubbo;
+package com.taotao.cloud.payment.api.rpc;
 
 /**
  * IDubboUserService
