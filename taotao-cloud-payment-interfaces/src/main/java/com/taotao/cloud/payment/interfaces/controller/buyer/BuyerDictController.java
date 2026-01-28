@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * pc端-字典API
+ * 买家端-字典API
  *
  * @author shuigedeng
  * @version 2021.9
@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/sys/buyer/dict")
-@Tag(name = "pc端-字典API", description = "pc端-字典API")
+@Tag(name = "买家端-字典API", description = "买家端-字典API")
 public class BuyerDictController extends BusinessController {
 
     // @Autowired
