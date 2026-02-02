@@ -18,7 +18,7 @@ package com.taotao.cloud.payment.interfaces.controller.inner;
 
 
 import com.taotao.boot.webagg.controller.InnerController;
-import com.taotao.cloud.payment.application.service.DictService;
+//import com.taotao.cloud.payment.application.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +32,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class DictApiImpl extends InnerController {
 
-	@Autowired
-	private DictService dictService;
+//	@Autowired
+//	private DictService dictService;
 
 //    @Override
 //    @NotAuth
