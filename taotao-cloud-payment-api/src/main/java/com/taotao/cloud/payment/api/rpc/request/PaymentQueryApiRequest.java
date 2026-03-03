@@ -16,7 +16,7 @@
 
 package com.taotao.cloud.payment.api.rpc.request;
 
-import com.taotao.boot.common.model.request.RequestBase;
+import com.taotao.boot.common.model.ddd.types.MarkerRequest;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -36,7 +36,7 @@ import lombok.experimental.*;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentQueryApiRequest extends RequestBase implements Serializable {
+public class PaymentQueryApiRequest implements MarkerRequest {
 
     @Serial private static final long serialVersionUID = 5126530068827085130L;
 
