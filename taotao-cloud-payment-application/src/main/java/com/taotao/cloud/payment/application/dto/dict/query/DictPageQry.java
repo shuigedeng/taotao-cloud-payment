@@ -16,7 +16,7 @@
 
 package com.taotao.cloud.payment.application.dto.dict.query;
 
-import com.taotao.boot.common.model.request.PageQuery;
+import com.taotao.boot.common.model.ddd.query.PageQuery;
 import lombok.*;
 import lombok.experimental.Accessors;
 

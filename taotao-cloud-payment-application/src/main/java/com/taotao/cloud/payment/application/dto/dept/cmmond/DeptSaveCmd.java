@@ -41,7 +41,7 @@ public class DeptSaveCmd implements Serializable {
 
     @Serial private static final long serialVersionUID = -4132785717179910025L;
 
-    @Schema(description = "部门id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(description = "部门id")
     private Integer deptId;
 
     @Schema(description = "部门名称")
