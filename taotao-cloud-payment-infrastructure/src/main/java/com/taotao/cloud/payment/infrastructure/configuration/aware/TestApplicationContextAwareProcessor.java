@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.aware;
+package com.taotao.cloud.payment.infrastructure.configuration.aware;
 
 /**
  * ApplicationContextAwareProcessor 该类本身并没有扩展点，但是该类内部却有6个扩展点可供实现 ，这些类触发的时机在bean实例化之后，初始化之前

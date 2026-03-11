@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.aware;
+package com.taotao.cloud.payment.infrastructure.configuration.aware;
 
 import com.taotao.boot.common.utils.log.LogUtils;
-import java.lang.reflect.Constructor;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.SmartInstantiationAwareBeanPostProcessor;
+
+import java.lang.reflect.Constructor;
 
 /**
  * 该扩展接口有3个触发点方法：

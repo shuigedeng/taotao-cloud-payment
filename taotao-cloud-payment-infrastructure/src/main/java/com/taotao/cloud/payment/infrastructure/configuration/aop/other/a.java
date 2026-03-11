@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.manager;
+package com.taotao.cloud.payment.infrastructure.configuration.aop.other;
 
 /**
- * UserManager
+ * a
  *
  * @author shuigedeng
- * @version 2026.04
- * @since 2025-12-19 09:30:45
+ * @version 2022.07
+ * @since 2022-07-22 16:42
  */
-public class UserManager {
-
-}
+public class a {}

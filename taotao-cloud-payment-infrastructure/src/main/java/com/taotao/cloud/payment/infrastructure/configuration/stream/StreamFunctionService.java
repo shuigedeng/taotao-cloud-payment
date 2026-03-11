@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.stream;
+package com.taotao.cloud.payment.infrastructure.configuration.stream;
 
 import com.taotao.boot.common.utils.log.LogUtils;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import org.apache.rocketmq.common.message.MessageConst;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +28,11 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * 流函数服务

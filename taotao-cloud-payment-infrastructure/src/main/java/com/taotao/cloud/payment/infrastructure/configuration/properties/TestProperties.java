@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.properties;
+package com.taotao.cloud.payment.infrastructure.configuration.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

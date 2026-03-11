@@ -14,26 +14,18 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.aware;
+package com.taotao.cloud.payment.infrastructure.configuration.aware;
 
 import com.taotao.boot.common.utils.log.LogUtils;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 
-/** 你可以在这里动态注册自己的beanDefinition，可以加载classpath之外的bean */
-public class TestBeanDefinitionRegistryPostProcessor
-        implements BeanDefinitionRegistryPostProcessor {
-    @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
-            throws BeansException {
-        LogUtils.info("[BeanDefinitionRegistryPostProcessor] postProcessBeanDefinitionRegistry");
-    }
-
+/** 在这个时机，用户可以通过实现这个扩展接口来自行处理一些东西，比如修改已经注册的beanDefinition的元信息。 */
+public class TestBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
             throws BeansException {
-        LogUtils.info("[BeanDefinitionRegistryPostProcessor] postProcessBeanFactory");
+        LogUtils.info("[BeanFactoryPostProcessor]");
     }
 }

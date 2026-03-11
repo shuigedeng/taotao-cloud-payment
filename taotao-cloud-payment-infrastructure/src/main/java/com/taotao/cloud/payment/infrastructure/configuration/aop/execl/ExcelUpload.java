@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.aop.execl;
+package com.taotao.cloud.payment.infrastructure.configuration.aop.execl;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

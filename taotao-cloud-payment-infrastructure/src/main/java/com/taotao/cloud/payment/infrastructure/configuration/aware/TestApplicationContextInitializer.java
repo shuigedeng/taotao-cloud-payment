@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.configuration.aware;
+package com.taotao.cloud.payment.infrastructure.configuration.aware;
 
 import com.taotao.boot.common.utils.log.LogUtils;
 import org.springframework.context.ApplicationContextInitializer;
