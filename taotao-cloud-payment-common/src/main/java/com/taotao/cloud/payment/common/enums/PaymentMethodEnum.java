@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.enums;
+package com.taotao.cloud.payment.common.enums;
 
 /**
  * 支付方式枚举

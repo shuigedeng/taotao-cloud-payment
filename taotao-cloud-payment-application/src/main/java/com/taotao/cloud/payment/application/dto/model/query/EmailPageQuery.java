@@ -14,21 +14,32 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.enums;
+package com.taotao.cloud.payment.application.dto.model.query;
+
+import java.util.List;
+import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.*;
 
 /**
- * 订单类型
+ * EmailVo
  *
  * @author shuigedeng
- * @version 2022.04
- * @since 2022-04-21 16:59:38
+ * @version 2022.03
+ * @since 2022-03-22 09:25:30
  */
-public enum CashierEnum {
+@Data
+@Accessors(chain = true)
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+public class EmailPageQuery {
 
-    /** 订单 */
-    ORDER,
-    /** 交易 */
-    TRADE,
-    /** 充值 */
-    RECHARGE
+    /** 收件人，支持多个收件人 */
+    private List<String> tos;
+
+    private String subject;
+    private String content;
 }

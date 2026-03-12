@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.constant;
+package com.taotao.cloud.payment.common.constant;
 
 /** 代码生成通用常量 */
 public interface PaymentConstants {

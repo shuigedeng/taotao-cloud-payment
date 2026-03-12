@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.model.excel.exports;
+package com.taotao.cloud.payment.application.dto.model.excel.imports;
 
 //
 // import cn.afterturn.easypoi.excel.annotation.Excel;
+// import java.io.Serial;
 // import java.io.Serializable;
 // import lombok.Data;
 import lombok.experimental.*;
 //
 // @Data
-// public class UserExport implements Serializable {
+// public class UserImport implements Serializable {
 //
+//	@Serial
 //	private static final long serialVersionUID = -5298570444065758538L;
 //
 //	@Excel(name = "用户编号", orderNum = "0", height = 20, width = 30, isImportField = "true_st")

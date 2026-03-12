@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.model.dto;
+package com.taotao.cloud.payment.application.dto.model.dto;
 
 import io.soabase.recordbuilder.core.RecordBuilder;
 import jakarta.validation.constraints.Max;
