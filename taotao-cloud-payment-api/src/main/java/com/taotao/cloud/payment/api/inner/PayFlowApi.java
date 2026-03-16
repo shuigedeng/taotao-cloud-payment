@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.api.inner;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.model.vo.PayFlowVO;
+import com.taotao.cloud.payment.api.inner.response.PayFlowResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
@@ -39,5 +39,5 @@ public interface PayFlowApi {
      * @since 2020/11/20 上午10:45
      */
     @GetExchange("/pay/flow/info/id/{id:[0-9]*}")
-    PayFlowVO findPayFlowById(@PathVariable(value = "id") Long id);
+	PayFlowResponse findPayFlowById(@PathVariable(value = "id") Long id);
 }
