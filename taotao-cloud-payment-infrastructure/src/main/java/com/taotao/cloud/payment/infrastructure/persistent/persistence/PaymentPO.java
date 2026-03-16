@@ -37,7 +37,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-@Accessors(fluent = true)
+
 @Entity
 @Table(name = PaymentPO.TABLE_NAME)
 @TableName(PaymentPO.TABLE_NAME)

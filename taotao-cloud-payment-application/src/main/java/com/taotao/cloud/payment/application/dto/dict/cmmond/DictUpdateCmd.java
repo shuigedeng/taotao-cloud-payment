@@ -34,7 +34,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Getter
 @ToString
-@Accessors(fluent = true)
+
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor

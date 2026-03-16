@@ -37,7 +37,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Getter
 @ToString
-@Accessors(fluent = true)
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(title = "系统应用")
