@@ -17,7 +17,7 @@
 package com.taotao.cloud.payment.infrastructure.persistent.persistence;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.taotao.boot.webagg.entity.BaseSuperEntity;
+import com.taotao.boot.webagg.entity.BasePO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -42,7 +42,7 @@ import java.util.Objects;
 @Table(name = PaymentPO.TABLE_NAME)
 @TableName(PaymentPO.TABLE_NAME)
 @org.springframework.data.relational.core.mapping.Table(name = PaymentPO.TABLE_NAME)
-public class PaymentPO extends BaseSuperEntity<PaymentPO, Long> {
+public class PaymentPO extends BasePO<PaymentPO> {
 
     public static final String TABLE_NAME = "ttc_app";
 
