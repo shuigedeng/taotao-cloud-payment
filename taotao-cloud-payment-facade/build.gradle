@@ -11,7 +11,7 @@ dependencies {
     api "io.github.shuigedeng:taotao-cloud-goods-api:2026.07"
     api "io.github.shuigedeng:taotao-cloud-member-api:2026.07"
     api "io.github.shuigedeng:taotao-cloud-message-api:2026.07"
-    api "io.github.shuigedeng:taotao-cloud-order-api:2026.07"
+    api "io.github.shuigedeng:taotao-cloud-payment-api:2026.07"
 
     api "io.github.shuigedeng:taotao-boot-starter-client"
 }
