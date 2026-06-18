@@ -2,40 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "anthropic/claude-sonnet-4-20250514",
   "default_agent": "build",
-  "agent_configs": {
-    "ddd-analyst": {
-      "description": "DDD 领域分析师 - 事件风暴、领域建模、聚合设计",
-      "model": "anthropic/claude-sonnet-4-20250514"
-    },
-    "code-copilot": {
-      "description": "渐进式 Spec 开发助手 - /propose → /apply → /review 工作流",
-      "model": "anthropic/claude-sonnet-4-20250514"
-    },
-    "code-reviewer": {
-      "description": "DDD 代码审查专家 - 检查架构合规、领域模型、代码质量",
-      "model": "anthropic/claude-sonnet-4-20250514"
-    }
-  },
   "lsp": {
     "java": {
-      "command": ["java", "-jar", "${user.home}/AppData/Local/opencode/lsp/java-language-server.jar"],
-      "extensions": ["java"],
-      "settings": {
-        "java.jdt.ls.vmargs": "-noverify -Xmx2G -XX:+UseG1GC -XX:+UseStringDeduplication",
-        "java.configuration.updateBuildConfiguration": "automatic",
-        "java.import.gradle.enabled": true,
-        "java.import.gradle.jvmArguments": ["--enable-preview"],
-        "java.completion.enabled": true,
-        "java.format.enabled": true,
-        "java.signatureHelp.enabled": true,
-        "java.referencesCodeLens.enabled": true,
-        "java.implementationsCodeLens.enabled": true
-      }
+      "command": ["java", "-jar", "C:/Users/Lenovo/AppData/Local/opencode/lsp/java-language-server.jar"],
+      "extensions": ["java"]
     }
-  },
-  "document_rules": {
-    "include": ["**/*.md", "**/*.java", "**/*.gradle", "**/*.toml", "**/*.xml", "**/*.yml", "**/*.yaml", "**/*.properties", "**/*.sql", "**/*.proto"],
-    "exclude": ["**/build/**", "**/.gradle/**", "**/node_modules/**", "**/target/**", "**/*.jar", "**/generated/**"]
   },
   "permission": {
     "bash": "allow",
@@ -44,7 +15,7 @@
     "glob": "allow",
     "grep": "allow",
     "list": "allow",
-    "write": "allow",
+    "write": "ask",
     "task": "allow",
     "webfetch": "allow",
     "websearch": "allow",
