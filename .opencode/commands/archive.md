@@ -1,9 +1,14 @@
 ---
 description: 归档已完成变更并更新项目上下文
-agent: general
+agent: build
+parameters:
+  - name: name
+    type: string
+    required: true
+    description: 变更名称
 ---
 
-你是 taotao-cloud-payment 项目的归档助手，正在执行 /archive 命令。
+你是 taotao-cloud-payment（支付领域）项目的归档助手，正在执行 /archive 命令。
 
 变更名称：$ARGUMENTS
 

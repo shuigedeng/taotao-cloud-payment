@@ -1,57 +1,55 @@
 ---
-description: 代码审查 - 检查 SpringBoot 代码质量
+description: DDD 架构审查 — 检查领域模型、分层依赖、代码质量
 parameters:
   - name: scope
     type: string
-    enum: [controller, service, repository, all]
+    enum: [domain, application, infrastructure, interfaces, all]
     default: all
-  - name: strict
-    type: boolean
-    default: true
+    description: 审查范围
 ---
 
-# 代码审查命令
+# DDD 代码审查
 
-执行代码审查，检查范围：`{{scope}}`
+审查范围：`{{ scope }}`
 
-## 检查清单
+## 审查清单
 
-### 架构规范
-- [ ] Controller 层是否只处理 HTTP 转换
-- [ ] Service 层是否有事务注解
-- [ ] Repository 是否使用了正确的查询方法
-- [ ] Entity 和 DTO 是否分离
+### 领域模型（Domain）
+- [ ] 聚合根是否维护内部不变量
+- [ ] 值对象是否不可变（final 字段、构造时自验证）
+- [ ] 跨聚合是否通过 ID 引用
+- [ ] 领域事件是否在聚合内 registerEvent
+- [ ] 仓储接口是否在 domain 层定义
+- [ ] 聚合根中是否注入了 Repository 或 Domain Service（❌ 禁止）
+
+### 应用层（Application）
+- [ ] 事务边界是否仅开在此层
+- [ ] 是否包含业务规则判断（❌ 禁止）
+- [ ] 是否直接调用 Mapper/DAO（❌ 禁止）
+
+### 基础设施层（Infrastructure）
+- [ ] 仓储实现是否正确映射 PO ↔ Domain
+- [ ] 事件发布是否正确传递领域事件
+
+### 接口层（Interfaces）
+- [ ] Controller 是否不含业务逻辑
+- [ ] 是否按 buyer/seller/manager/mall 分包
+- [ ] 参数校验是否完整
 
 ### 代码质量
-- [ ] 是否有重复代码
 - [ ] 方法长度是否超过 50 行
-- [ ] 循环复杂度是否过高（>10）
-- [ ] 是否正确处理了空值
-
-### 性能问题
 - [ ] 是否存在 N+1 查询
-- [ ] 批量操作是否使用了批处理方法
-- [ ] 是否避免了 SELECT *
-- [ ] 缓存策略是否合理
-
-### 安全问题
-- [ ] 输入参数是否校验
-- [ ] SQL 注入防护
-- [ ] 权限控制是否完整
-- [ ] 敏感数据是否脱敏
+- [ ] 金额是否使用 BigDecimal（❌ 禁止 float/double）
+- [ ] 空值处理是否正确
 
 ## 输出格式
 ```markdown
-## 代码审查报告
-
-### 🔴 严重问题（必须修复）
-- [文件:行号] 问题描述 + 修复建议
+### 🔴 严重（必须修复）
+- [文件:行号] 问题 + 修复建议
 
 ### 🟡 警告（建议修复）
-- [文件:行号] 问题描述 + 优化方案
+- [文件:行号] 问题 + 优化方案
 
-### 🟢 优化建议
-- 建议内容
-
-### ✅ 通过项
+### 🟢 通过项
 - 列举做得好的地方
+```

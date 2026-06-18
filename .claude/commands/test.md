@@ -1,73 +1,54 @@
-**`.claude/commands/test.md`**
-```markdown
 ---
-description: 运行测试并生成报告
+description: 运行测试并生成 JaCoCo 覆盖率报告
 parameters:
   - name: module
     type: string
-    description: 测试模块（controller/service/repository）
+    description: 测试模块（domain/application/infrastructure/interfaces 或完整模块名 taotao-cloud-payment-xxx）
     required: false
   - name: coverage
     type: boolean
     default: true
-  - name: parallel
-    type: boolean
-    default: true
+    description: 是否生成覆盖率报告
 ---
 
 # 测试执行
 
 ## 执行步骤
 
-### 1. 清理并编译
-```bash
-./mvnw clean compile
-2. 运行测试
+### 1. 运行测试
 {% if module %}
-
-bash
-./mvnw test -Dtest=*{{module}}*Test
+{% if module startsWith "taotao-cloud-payment-" %}
+```bash
+gradlew :{{ module }}:test
+```
 {% else %}
-
-bash
-./mvnw test -DforkCount={{ parallel ? '1C' : '1' }}
+```bash
+gradlew :taotao-cloud-payment-{{ module }}:test
+```
+{% endif %}
+{% else %}
+```bash
+gradlew test
+```
 {% endif %}
 
-3. 生成覆盖率报告（如果需要）
+### 2. 生成覆盖率报告
 {% if coverage %}
-
-bash
-./mvnw jacoco:report
-# 报告位置: target/site/jacoco/index.html
+```bash
+gradlew jacocoTestReport
+```
+报告位置: `build/reports/jacoco/test/html/index.html`
 {% endif %}
 
-4. 输出测试结果
-测试统计
-总测试数: {{total}}
+### 3. 输出结果
+```
+测试总数: {{ total }}
+通过: {{ passed }}
+失败: {{ failed }}
+耗时: {{ duration }}ms
 
-通过: {{passed}}
-
-失败: {{failed}}
-
-跳过: {{skipped}}
-
-耗时: {{duration}}ms
-
-覆盖率报告
-指令覆盖率: {{instructionCoverage}}%
-
-分支覆盖率: {{branchCoverage}}%
-
-行覆盖率: {{lineCoverage}}%
-
-方法覆盖率: {{methodCoverage}}%
-
-失败测试详情
-{% for failure in failures %}
-
-{{failure.className}}.{{failure.methodName}}
-
-错误: {{failure.message}}
-
-堆栈: {{failure.stackTrace | truncate(200)}}
-{% endfor %}
+覆盖率:
+  指令: {{ instructionCoverage }}%
+  分支: {{ branchCoverage }}%
+  行: {{ lineCoverage }}%
+```

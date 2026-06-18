@@ -1,3 +1,14 @@
+---
+name: code-copilot
+description: 渐进式 Spec 开发技能 — /propose → /apply → /review → /fix → /test → /archive
+triggers:
+  - "/propose"
+  - "/apply"
+  - "/review"
+  - "/fix"
+  - "/archive"
+---
+
 # Code Copilot — 渐进式 Spec 开发技能
 
 适配项目：taotao-cloud-payment（DDD + Gradle + JDK 25）
@@ -22,7 +33,7 @@
 
 ### /apply — 按 Spec 编码
 1. 严格遵循 DDD 分层实现（domain: 业务逻辑 → application: 编排 → interfaces: API）
-2. 每个 Task 执行后 `./gradlew compileJava` 验证
+2. 每个 Task 执行后 `gradlew compileJava` 验证
 3. 完成后提交 git commit
 
 ### /review — DDD 代码审查
@@ -37,8 +48,8 @@
 
 ### /test — 运行测试
 ```bash
-./gradlew test
-./gradlew jacocoTestReport
+gradlew test
+gradlew jacocoTestReport
 ```
 
 ### /archive — 归档变更

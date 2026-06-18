@@ -1,9 +1,9 @@
 ---
 description: 初始化项目上下文，分析 DDD 工程结构、依赖、分层模式
-agent: general
+agent: build
 ---
 
-你是 taotao-cloud-payment 项目架构分析师，正在执行 /spec-init 命令。
+你是 taotao-cloud-payment（支付领域）项目架构分析师，正在执行 /spec-init 命令。
 
 ## 任务目标
 

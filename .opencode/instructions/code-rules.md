@@ -1,6 +1,6 @@
 # 项目编码规范 — taotao-cloud-payment
 
-> 补充 DDD 架构规范（详见 `.claude/CLAUDE.md` 和 `.claude/rules/`）中未覆盖的实现细节
+> 支付领域 DDD 编码规范。补充 `.opencode/AGENTS.md` 中未覆盖的实现细节。
 
 ---
 
@@ -12,34 +12,34 @@ api  ←  interfaces  ←  application  →  facade
                      domain  ←  infrastructure
 ```
 
-- `domain`：零外部依赖，不依赖 Spring、不依赖数据库
+- `domain`：零外部依赖，不依赖 Spring、不依赖数据库、不依赖任何框架
 - `application`：依赖 `domain`，可依赖 `facade` 接口，不依赖 `infrastructure`
 - `infrastructure`：依赖 `domain` 实现仓储，依赖 `application` 实现事件订阅
 - `interfaces`：依赖 `application`，不直接依赖 `infrastructure`
-- `api`：纯 DTO + 接口定义，不依赖任何业务模块
+- `api`：纯 DTO + 接口定义 + proto，不依赖任何业务模块
 
 ### 禁止违反的依赖
 ```java
 // ❌ 禁止：Controller 直接调用 Repository
-@Autowired private OrderRepository orderRepository;
+@Autowired private PaymentRepository paymentRepository;
 
 // ❌ 禁止：Application Service 直接调用 Mapper
-@Autowired private OrderMapper orderMapper;
+@Autowired private PayFlowMapper payFlowMapper;
 
 // ❌ 禁止：Domain Service 注入 Repository
-@Autowired private OrderRepository orderRepository;
+@Autowired private PayFlowRepository payFlowRepository;
 
 // ✅ 正确：Application Service 通过仓储接口操作持久化
-private final OrderDomainRepository orderRepository;
+private final PayFlowRepository payFlowRepository;
 ```
 
 ## 2. 包结构规范
 
 ```
-com.taotao.cloud.order.{module}/
+com.taotao.cloud.payment.{module}/
 ├── aggregate/     # 聚合根（@AggregateRoot）
 ├── entity/        # 实体（@Entity）
-├── valobj/        # 值对象（@ValueObject | @Embeddable）
+├── valueobject/   # 值对象（@ValueObject | @Embeddable）
 ├── event/         # 领域事件（extends DomainEvent）
 ├── repository/    # 仓储接口
 └── service/       # 领域服务（@DomainService）
@@ -48,26 +48,31 @@ com.taotao.cloud.order.{module}/
 ### 聚合根的写法
 ```java
 @AggregateRoot
-public class OrderAgg {
+public class PayFlowAgg {
     // 聚合内实体用对象引用（非 ID）
-    private List<OrderItem> items;
+    private List<PayItem> items;
 
     // 跨聚合用 ID 引用
-    private Long customerId;
+    private Long orderId;
+    private Long memberId;
 
     // 业务行为方法（不是 setter）
-    public void addItem(ProductId productId, Money price, int quantity) {
+    public void refund(Money amount, String reason) {
         // 校验业务规则
+        if (this.status != PayStatus.PAID) {
+            throw new DomainException("只有已支付流水才能退款");
+        }
         // 修改内部状态
+        this.status = PayStatus.REFUNDING;
         // 注册领域事件
-        registerEvent(new OrderItemAddedEvent(this.id, productId));
+        registerEvent(new PayFlowRefundEvent(this.id, amount, reason));
     }
 
-    // 无参构造（JPA 要求），protected
-    protected OrderAgg() {}
+    // 无参构造（框架要求），protected
+    protected PayFlowAgg() {}
 
     // 静态工厂方法
-    public static OrderAgg create(...) { ... }
+    public static PayFlowAgg create(CreatePayFlowCommand cmd) { ... }
 }
 ```
 
@@ -88,7 +93,31 @@ public class Money {
     }
 
     // 只有 getter，无 setter
+    public BigDecimal getAmount() { return amount; }
+    public Currency getCurrency() { return currency; }
+
+    // 值对象行为：金额运算
+    public Money add(Money other) {
+        if (!this.currency.equals(other.currency)) {
+            throw new DomainException("货币类型不匹配");
+        }
+        return new Money(this.amount.add(other.amount), this.currency);
+    }
+
     // 覆写 equals/hashCode（基于所有属性）
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Money)) return false;
+        Money money = (Money) o;
+        return amount.compareTo(money.amount) == 0 &&
+               currency.equals(money.currency);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, currency);
+    }
 }
 ```
 
@@ -99,18 +128,19 @@ public class Money {
 @ApplicationService
 @Service
 @Transactional
-public class OrderCommandServiceImpl implements OrderCommandService {
-    private final OrderDomainRepository orderRepository;
-    private final OrderDomainService orderDomainService;
+public class PayFlowCommandServiceImpl implements PayFlowCommandService {
+    private final PayFlowRepository payFlowRepository;
+    private final PayFlowDomainService payFlowDomainService;
+    private final PaymentRefundApi paymentRefundApi; // 防腐层调用
 
     @Override
-    public CreateOrderResponse createOrder(CreateOrderCommand command) {
+    public CreatePayFlowResponse createPayFlow(CreatePayFlowCommand command) {
         // 1. 构建领域对象
         // 2. 调用领域服务（如果需要跨聚合逻辑）
         // 3. 保存聚合
         // 4. 发布领域事件
         // 5. 返回 DTO
-        return CreateOrderResponse.fromDomain(order);
+        return CreatePayFlowResponse.fromDomain(payFlow);
     }
 }
 ```
@@ -120,13 +150,13 @@ public class OrderCommandServiceImpl implements OrderCommandService {
 @ApplicationService
 @Service
 @Transactional(readOnly = true)
-public class OrderQueryServiceImpl implements OrderQueryService {
-    private final OrderQueryRepository orderQueryRepository;
+public class PayFlowQueryServiceImpl implements PayFlowQueryService {
+    private final PayFlowQueryRepository payFlowQueryRepository;
 
     @Override
-    public OrderDetailResult queryDetail(String orderSn) {
+    public PayFlowDetailResult queryDetail(String payFlowSn) {
         // 直接返回 DTO/Result，不经过领域模型
-        return orderQueryRepository.getDetailBySn(orderSn);
+        return payFlowQueryRepository.getDetailBySn(payFlowSn);
     }
 }
 ```
@@ -135,20 +165,20 @@ public class OrderQueryServiceImpl implements OrderQueryService {
 
 ```java
 @RestController
-@RequestMapping("/{role}/order/order")
+@RequestMapping("/{role}/payment/pay-flow")
 // role = buyer | seller | manager
-public class OrderBuyerController extends BusinessController {
+public class PayFlowBuyerController extends BusinessController {
     // HTTP 解析 + 参数校验 + Result 封装
     // 禁止业务逻辑
 
     @GetMapping("/page")
-    public Result<PageResult<OrderSimpleResult>> page(OrderPageQuery query) {
-        return Result.success(orderQueryService.pageQuery(query));
+    public Result<PageResult<PayFlowSimpleResult>> page(PayFlowPageQuery query) {
+        return Result.success(payFlowQueryService.pageQuery(query));
     }
 
-    @PostMapping("/{orderSn}/cancel")
-    public Result<Void> cancel(@PathVariable String orderSn, @RequestParam String reason) {
-        orderCommandService.cancel(orderSn, reason);
+    @PostMapping("/{sn}/refund")
+    public Result<Void> refund(@PathVariable String sn, @RequestBody RefundRequest request) {
+        payFlowCommandService.refund(sn, request);
         return Result.success();
     }
 }
@@ -157,14 +187,27 @@ public class OrderBuyerController extends BusinessController {
 ## 5. 枚举规范
 
 ```java
-// 订单状态枚举，在 common 模块定义
-public enum OrderStatusEnum {
-    PENDING("待付款"),
-    PAID("已付款"),
-    DELIVERED("已发货"),
-    RECEIVED("已收货"),
-    COMPLETED("已完成"),
-    CANCELLED("已取消");
+// 支付状态枚举，在 common 模块定义
+public enum PayStatusEnum {
+    UNPAID("未支付"),
+    PAID("已支付"),
+    REFUNDING("退款中"),
+    REFUNDED("已退款"),
+    PARTIAL_REFUND("部分退款"),
+    CLOSED("已关闭"),
+    FAILED("支付失败");
+
+    private final String description;
+    // ...
+}
+
+// 支付方式枚举
+public enum PaymentMethodEnum {
+    ALIPAY("支付宝"),
+    WECHAT_PAY("微信支付"),
+    UNION_PAY("银联支付"),
+    BALANCE("余额支付"),
+    POINTS("积分支付");
 
     private final String description;
     // ...
@@ -175,9 +218,16 @@ public enum OrderStatusEnum {
 
 ```java
 // 事件定义在 domain/event/
-public class OrderCreatedEvent extends DomainEvent {
-    private final Long orderId;
+public class PayFlowCreatedEvent extends DomainEvent {
+    private final Long payFlowId;
+    private final Money amount;
     // 不可变，构造时赋值
+}
+
+public class PayFlowRefundEvent extends DomainEvent {
+    private final Long payFlowId;
+    private final Money refundAmount;
+    // ...
 }
 
 // 事件在聚合根内注册
@@ -188,33 +238,37 @@ public class OrderCreatedEvent extends DomainEvent {
 ## 7. MapStruct + Assembler 规范
 
 ```java
-// Assembler 在 infrastructure/assembler/
-// 职责：Domain Entity ←→ Persistence PO 双向映射
+// Assembler 职责：
+// - infrastructure/assembler/  : Domain Entity ←→ Persistence PO
+// - application/assembler/     : Domain Entity ←→ DTO
 
 @Mapper(componentModel = "spring")
-public interface OrderAssembler {
-    OrderPo toPo(Order order);
-    Order toDomain(OrderPo po);
+public interface PayFlowAssembler {
+    PayFlowPo toPo(PayFlow payFlow);
+    PayFlow toDomain(PayFlowPo po);
 }
 ```
 
 ## 8. 构建与测试
 
 ```bash
-# 全量构建
-./gradlew build
+# 全量构建（跳过测试）
+gradlew build -x test
 
 # 运行所有测试
-./gradlew test
+gradlew test
 
 # 运行指定模块测试
-./gradlew :taotao-cloud-payment-domain:test
+gradlew :taotao-cloud-payment-domain:test
 
 # 代码质量
-./gradlew checkstyleMain spotlessCheck pmdMain spotbugsMain
+gradlew checkstyleMain spotlessCheck pmdMain spotbugsMain
 
 # 本地启动
-./gradlew :taotao-cloud-payment-assembly:bootRun --args='--spring.profiles.active=dev'
+gradlew :taotao-cloud-payment-assembly:bootRun --args='--spring.profiles.active=dev'
+
+# 生成覆盖率报告
+gradlew jacocoTestReport
 ```
 
 ## 9. 数据库规范
@@ -231,10 +285,22 @@ public interface OrderAssembler {
 `version` int DEFAULT 0 COMMENT '乐观锁'
 ```
 
+### 支付表特有字段建议
+```sql
+`pay_flow_sn`   varchar(64) NOT NULL COMMENT '支付流水号',
+`order_sn`      varchar(64) DEFAULT NULL COMMENT '业务订单号',
+`pay_amount`    decimal(10,2) NOT NULL COMMENT '支付金额',
+`refund_amount` decimal(10,2) DEFAULT 0 COMMENT '已退款金额',
+`pay_status`    varchar(32) NOT NULL COMMENT '支付状态',
+`pay_method`    varchar(32) DEFAULT NULL COMMENT '支付方式',
+`pay_time`      datetime DEFAULT NULL COMMENT '支付时间',
+`notify_url`    varchar(512) DEFAULT NULL COMMENT '异步通知地址',
+```
+
 ### 禁止
 - 循环中查询数据库（N+1 问题）
 - `SELECT *`
 - 在 Java 代码中拼接 SQL
 - 跨聚合直接操作其他聚合的数据表
-
-
+- 支付金额、退款金额使用 `float`/`double`（必须用 `decimal`）
+- 在事务中调用远程 RPC（可能导致分布式事务超时）

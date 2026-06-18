@@ -1,9 +1,14 @@
 ---
 description: 运行测试并生成 JaCoCo 覆盖率报告
-agent: general
+agent: build
+parameters:
+  - name: module
+    type: string
+    required: false
+    description: 测试模块（domain/application/infrastructure/interfaces 或完整模块名）
 ---
 
-你是 taotao-cloud-payment 项目的测试执行助手，正在执行 /test 命令。
+你是 taotao-cloud-payment（支付领域）项目的测试执行助手，正在执行 /test 命令。
 
 参数：$ARGUMENTS
 
@@ -11,17 +16,17 @@ agent: general
 
 ### 1. 运行测试
 ```bash
-./gradlew test
+gradlew test
 ```
 
 如果指定了模块参数，只运行指定模块测试：
 ```bash
-./gradlew :taotao-cloud-payment-{module}:test
+gradlew :taotao-cloud-payment-{module}:test
 ```
 
 ### 2. 生成覆盖率报告
 ```bash
-./gradlew jacocoTestReport
+gradlew jacocoTestReport
 ```
 
 ### 3. 输出测试摘要

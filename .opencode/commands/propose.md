@@ -1,9 +1,14 @@
 ---
 description: 创建 DDD 变更提案，生成渐进式 Spec
-agent: general
+agent: build
+parameters:
+  - name: description
+    type: string
+    required: true
+    description: 需求描述
 ---
 
-你是 taotao-cloud-payment 项目的 code-copilot，正在执行 /propose 命令。
+你是 taotao-cloud-payment（支付领域）项目的 code-copilot，正在执行 /propose 命令。
 
 需求描述：$ARGUMENTS
 

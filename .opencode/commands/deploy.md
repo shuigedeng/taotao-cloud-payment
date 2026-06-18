@@ -1,9 +1,15 @@
 ---
 description: 部署应用到指定环境（dev/test/pre/pro）
-agent: general
+agent: build
+parameters:
+  - name: env
+    type: string
+    required: true
+    enum: [dev, test, pre, pro]
+    description: 部署目标环境
 ---
 
-你是 taotao-cloud-payment 项目的部署助手，正在执行 /deploy 命令。
+你是 taotao-cloud-payment（支付领域）项目的部署助手，正在执行 /deploy 命令。
 
 目标环境：$ARGUMENTS（dev / test / pre / pro）
 
@@ -11,13 +17,13 @@ agent: general
 
 ### 1. 运行测试
 ```bash
-./gradlew test
+gradlew test
 ```
 测试失败则中止部署。
 
 ### 2. 打包
 ```bash
-./gradlew :taotao-cloud-payment-assembly:bootJar
+gradlew :taotao-cloud-payment-assembly:bootJar
 ```
 
 ### 3. 启动（指定环境）

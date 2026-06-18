@@ -1,11 +1,6 @@
-```markdown
 ---
 name: aggregate-designer
-description: 聚合设计专家，负责设计DDD聚合根
-tools:
-  - write_file
-  - edit_file
-  - read_file
+description: 聚合设计专家，负责设计 DDD 支付领域聚合根
 ---
 
 # 聚合设计代理
@@ -13,90 +8,79 @@ tools:
 ## 设计流程
 
 ### 1. 识别聚合边界
-根据业务一致性要求划分聚合：
-
-```markdown
-## 聚合边界分析
-
-### Order聚合
-**事务一致性要求**:
-- 订单创建时必须校验库存
-- 订单支付时必须验证金额
-- 订单取消时必须释放库存
+```
+## PayFlow 聚合
+**事务一致性**:
+- 创建支付流水时记录完整的支付信息
+- 退款时必须同时更新支付流水和退款日志
 
 **聚合边界**:
-- Order（聚合根）
-- OrderItem（实体）
-- OrderStatus（值对象）
-2. 设计聚合根
-生成完整的聚合根代码：
+- PayFlowAgg（聚合根）
+- PayItem（实体）
+- Money（值对象）
+- PayStatus（值对象）
 
-java
-@Aggregate
-@Entity
-@Table(name = "orders")
-public class Order {
-    private OrderId id;
-    private CustomerId customerId;
-    private List<OrderItem> items;
-    private OrderStatus status;
-    private Money totalAmount;
-    
-    // 工厂方法
-    public static Order create(CustomerId customerId) {
-        Order order = new Order();
-        order.id = OrderId.generate();
-        order.customerId = customerId;
-        order.status = OrderStatus.PENDING;
-        order.items = new ArrayList<>();
-        order.totalAmount = Money.ZERO;
-        order.registerEvent(new OrderCreatedEvent(order.id));
-        return order;
+## RefundLog 聚合
+**事务一致性**:
+- 退款日志必须完整记录退款申请、处理、结果
+
+**聚合边界**:
+- RefundLogAgg（聚合根）
+- RefundStatus（值对象）
+```
+
+### 2. 聚合根代码模板
+```java
+@AggregateRoot
+public class PayFlowAgg {
+    private PayFlowId id;
+    private Long orderId;          // 跨聚合 ID 引用
+    private Long memberId;         // 跨聚合 ID 引用
+    private Money amount;
+    private Money refundAmount;
+    private PayStatus status;
+    private PaymentMethod method;
+    private List<PayItem> items;
+    private List<DomainEvent> domainEvents;
+
+    public static PayFlowAgg create(PayFlowId id, Money amount, PaymentMethod method) {
+        PayFlowAgg agg = new PayFlowAgg();
+        agg.id = id;
+        agg.amount = amount;
+        agg.refundAmount = Money.ZERO;
+        agg.status = PayStatus.UNPAID;
+        agg.method = method;
+        agg.items = new ArrayList<>();
+        agg.registerEvent(new PayFlowCreatedEvent(id));
+        return agg;
     }
-    
-    // 行为方法
-    public void addItem(ProductId productId, Money price, int quantity) {
-        validatePending();
-        validateQuantity(quantity);
-        
-        OrderItem item = new OrderItem(productId, price, quantity);
-        this.items.add(item);
-        recalculateTotal();
-        
-        registerEvent(new OrderItemAddedEvent(id, productId, quantity));
-    }
-    
-    private void validatePending() {
-        if (status != OrderStatus.PENDING) {
-            throw new DomainException("只有待支付订单可以修改");
+
+    public void refund(Money amount, String reason) {
+        if (status != PayStatus.PAID && status != PayStatus.PARTIAL_REFUND) {
+            throw new DomainException("当前状态不允许退款");
         }
+        Money refundable = this.amount.subtract(this.refundAmount);
+        if (amount.compareTo(refundable) > 0) {
+            throw new DomainException("退款金额超出可退金额");
+        }
+        this.refundAmount = this.refundAmount.add(amount);
+        this.status = amount.compareTo(refundable) == 0
+            ? PayStatus.REFUNDING : PayStatus.PARTIAL_REFUND;
+        registerEvent(new PayFlowRefundEvent(this.id, amount, reason));
     }
-    
-    private void recalculateTotal() {
-        this.totalAmount = items.stream()
-            .map(OrderItem::getSubtotal)
-            .reduce(Money.ZERO, Money::add);
+
+    public void registerEvent(DomainEvent event) {
+        if (domainEvents == null) domainEvents = new ArrayList<>();
+        domainEvents.add(event);
     }
 }
-3. 设计仓储接口
-java
-public interface OrderRepository {
-    Order findById(OrderId id);
-    void save(Order order);
-    Page<Order> findByCustomerId(CustomerId customerId, Pageable pageable);
-    boolean existsById(OrderId id);
+```
+
+### 3. 仓储接口
+```java
+public interface PayFlowRepository {
+    PayFlowAgg findById(PayFlowId id);
+    void save(PayFlowAgg payFlow);
+    Page<PayFlowAgg> findByMemberId(Long memberId, Pageable pageable);
 }
-4. 编写单元测试
-java
-@Test
-void shouldAddItemToOrder() {
-    // Given
-    Order order = Order.create(customerId);
-    
-    // When
-    order.addItem(productId, new Money(100), 2);
-    
-    // Then
-    assertThat(order.getTotalAmount()).isEqualTo(new Money(200));
-    assertThat(order.getDomainEvents()).hasSize(2);
-}
+```

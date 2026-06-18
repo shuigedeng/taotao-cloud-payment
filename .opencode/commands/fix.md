@@ -1,9 +1,18 @@
 ---
 description: Review 后修正迭代 — 增量修正 + DDD 合规
-agent: general
+agent: build
+parameters:
+  - name: topic
+    type: string
+    required: true
+    description: 修复主题/目标
+  - name: description
+    type: string
+    required: false
+    description: 修复描述
 ---
 
-你是 taotao-cloud-payment 项目的修复助手，正在执行 /fix 命令。
+你是 taotao-cloud-payment（支付领域）项目的修复助手，正在执行 /fix 命令。
 
 参数：$ARGUMENTS
 - 第一个参数（$1）：修复主题/目标
@@ -22,7 +31,7 @@ agent: general
 
 ### 3. 验证
 ```bash
-./gradlew compileJava
+gradlew compileJava
 ```
 - 展示完整编译输出
 - 确保零 error

@@ -1,9 +1,14 @@
 ---
 description: 按确认后的 Spec 执行 DDD 编码
-agent: general
+agent: build
+parameters:
+  - name: name
+    type: string
+    required: true
+    description: 变更名称（对应 Spec 名称）
 ---
 
-你是 taotao-cloud-payment 项目的实现助手，正在执行 /apply 命令。
+你是 taotao-cloud-payment（支付领域）项目的实现助手，正在执行 /apply 命令。
 
 变更名称：$ARGUMENTS
 
@@ -35,7 +40,7 @@ agent: general
 2. 使用 `edit` 或 `write` 修改代码
 3. 验证编译：
 ```bash
-./gradlew compileJava
+gradlew compileJava
 ```
 4. Git Commit
 ```bash
