@@ -1,24 +1,34 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
-    "read": ["**/src/**/*.java", "**/src/**/*.yml", "**/src/**/*.yaml", "**/src/**/*.properties", "**/src/**/*.sql", "**/src/**/*.proto", "**/src/**/*.json", "build.gradle", "settings.gradle", "gradle/**", "*.md", ".opencode/*.json"],
-    "write": ["**/src/**/*.java", "**/src/**/*.yml", "**/src/**/*.yaml", "**/src/**/*.properties", "**/src/**/*.sql", "**/src/**/*.proto", "build.gradle", "settings.gradle", "gradle/**"],
-    "execute": ["gradlew", "git", "java", "docker"],
-    "network": ["localhost:8080", "localhost:3306", "localhost:8848", "localhost:6379"]
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Edit(**/src/**/*.java)",
+      "Edit(**/src/**/*.yml)",
+      "Edit(**/src/**/*.yaml)",
+      "Edit(**/src/**/*.properties)",
+      "Edit(**/src/**/*.sql)",
+      "Edit(**/src/**/*.proto)",
+      "Edit(build.gradle)",
+      "Edit(settings.gradle)",
+      "Edit(gradle/**)",
+      "Bash(gradlew *)",
+      "Bash(git *)",
+      "Bash(java *)",
+      "Bash(docker *)",
+      "Bash(curl *)",
+      "WebFetch(domain:localhost)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Bash(rm -rf /)",
+      "Bash(wget *)"
+    ]
   },
-  "allowedTools": ["read", "write", "edit", "bash", "glob", "grep", "search", "question", "websearch"],
-  "bash": {
-    "allowedCommands": ["gradlew", "git", "java", "docker", "curl", "cat", "echo", "mkdir", "cp", "mv", "rm"]
-  },
-  "git": {
-    "autoCommit": false,
-    "requireTests": true,
-    "commitMessageTemplate": "type(scope): description"
-  },
-  "build": {
-    "tool": "gradle",
-    "compileCommand": "gradlew compileJava",
-    "testCommand": "gradlew test",
-    "buildCommand": "gradlew build -x test",
-    "lintCommands": ["gradlew checkstyleMain", "gradlew spotlessCheck", "gradlew pmdMain", "gradlew spotbugsMain"]
+  "env": {
+    "JAVA_TOOL_OPTIONS": "--enable-preview",
+    "GRADLE_OPTS": "-Dorg.gradle.jvmargs=--enable-preview"
   }
 }
