@@ -46,11 +46,9 @@ public enum PaymentMethodEnum {
      * @return 字符串
      * @since 2022.03
      */
-
     public String getPlugin() {
         return plugin;
     }
-
 
     /**
      * paymentName 方法
@@ -58,7 +56,6 @@ public enum PaymentMethodEnum {
      * @return 字符串
      * @since 2022.03
      */
-
     public String paymentName() {
         return paymentName;
     }

@@ -40,7 +40,6 @@ public class TestProperties {
      * @return 结果数量
      * @since 2022.03
      */
-
     public Integer getSignInFailureLimited() {
         return signInFailureLimited;
     }
@@ -52,7 +51,6 @@ public class TestProperties {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setSignInFailureLimited(Integer signInFailureLimited) {
         this.signInFailureLimited = signInFailureLimited;
     }

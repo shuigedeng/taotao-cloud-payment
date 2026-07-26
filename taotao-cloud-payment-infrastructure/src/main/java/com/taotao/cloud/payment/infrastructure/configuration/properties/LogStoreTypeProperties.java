@@ -41,7 +41,6 @@ public class LogStoreTypeProperties {
      * @return 字符串
      * @since 2022.03
      */
-
     public String getType() {
         return type;
     }
@@ -53,7 +52,6 @@ public class LogStoreTypeProperties {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setType(String type) {
         this.type = type;
     }

@@ -71,7 +71,6 @@ public class ExcelUploadAspect {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void uploadPoint() {
     }
 
@@ -84,7 +83,6 @@ public class ExcelUploadAspect {
      * @return Object
      * @since 2022.03
      */
-
     public Object uploadControl( ProceedingJoinPoint pjp ) {
         // 获取方法上的注解，进而获取uploadType
         MethodSignature signature = (MethodSignature) pjp.getSignature();
@@ -117,7 +115,6 @@ public class ExcelUploadAspect {
         return new Object();
     }
 
-
     /**
      * fail 方法
      *
@@ -126,7 +123,6 @@ public class ExcelUploadAspect {
      * @return 无返回值
      * @since 2022.03
      */
-
     private void fail( String message, String batchNo ) {
         // 生成上传错误日志文件的文件key
         String s3Key = UUID.randomUUID().toString().replace("-", "");

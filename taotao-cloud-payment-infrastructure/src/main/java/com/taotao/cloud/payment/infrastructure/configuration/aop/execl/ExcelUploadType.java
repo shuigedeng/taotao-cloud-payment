@@ -45,7 +45,6 @@ public enum ExcelUploadType {
      * @return 结果数量
      * @since 2022.03
      */
-
     public int getCode() {
         return code;
     }
@@ -56,7 +55,6 @@ public enum ExcelUploadType {
      * @return 字符串
      * @since 2022.03
      */
-
     public String getDesc() {
         return desc;
     }
@@ -68,7 +66,6 @@ public enum ExcelUploadType {
      * @return ExcelUploadType
      * @since 2022.03
      */
-
     public static ExcelUploadType getByCode(Integer code) {
         return map.get(code);
     }

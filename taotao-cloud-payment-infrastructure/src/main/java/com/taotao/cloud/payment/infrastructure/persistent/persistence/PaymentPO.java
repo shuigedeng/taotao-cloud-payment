@@ -72,7 +72,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 字符串
      * @since 2022.03
      */
-
     public String getName() {
         return name;
     }
@@ -83,7 +82,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 字符串
      * @since 2022.03
      */
-
     public String getCode() {
         return code;
     }
@@ -94,7 +92,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 字符串
      * @since 2022.03
      */
-
     public String getIcon() {
         return icon;
     }
@@ -105,7 +102,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 结果数量
      * @since 2022.03
      */
-
     public Integer getSort() {
         return sort;
     }
@@ -117,7 +113,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setSort(Integer sort) {
         this.sort = sort;
     }
@@ -129,7 +124,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setIcon(String icon) {
         this.icon = icon;
     }
@@ -141,7 +135,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setCode(String code) {
         this.code = code;
     }
@@ -153,7 +146,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setName(String name) {
         this.name = name;
     }

@@ -49,7 +49,6 @@ public class GenProperties {
      * @return 字符串
      * @since 2022.03
      */
-
     public static String getAuthor() {
         return author;
     }
@@ -61,7 +60,6 @@ public class GenProperties {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setAuthor(String author) {
         GenProperties.author = author;
     }
@@ -72,7 +70,6 @@ public class GenProperties {
      * @return 字符串
      * @since 2022.03
      */
-
     public static String getPackageName() {
         return packageName;
     }
@@ -84,7 +81,6 @@ public class GenProperties {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setPackageName(String packageName) {
         GenProperties.packageName = packageName;
     }
@@ -95,7 +91,6 @@ public class GenProperties {
      * @return 是否成功
      * @since 2022.03
      */
-
     public static boolean getAutoRemovePre() {
         return autoRemovePre;
     }
@@ -107,7 +102,6 @@ public class GenProperties {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setAutoRemovePre(boolean autoRemovePre) {
         GenProperties.autoRemovePre = autoRemovePre;
     }
@@ -118,7 +112,6 @@ public class GenProperties {
      * @return 字符串
      * @since 2022.03
      */
-
     public static String getTablePrefix() {
         return tablePrefix;
     }
@@ -130,7 +123,6 @@ public class GenProperties {
      * @return 无返回值
      * @since 2022.03
      */
-
     public void setTablePrefix(String tablePrefix) {
         GenProperties.tablePrefix = tablePrefix;
     }
