@@ -39,13 +39,35 @@ public enum ExcelUploadType {
         this.desc = desc;
     }
 
+    /**
+     * 获取
+     *
+     * @return 结果数量
+     * @since 2022.03
+     */
+
     public int getCode() {
         return code;
     }
 
+    /**
+     * 获取
+     *
+     * @return 字符串
+     * @since 2022.03
+     */
+
     public String getDesc() {
         return desc;
     }
+
+    /**
+     * 获取
+     *
+     * @param code code
+     * @return ExcelUploadType
+     * @since 2022.03
+     */
 
     public static ExcelUploadType getByCode(Integer code) {
         return map.get(code);

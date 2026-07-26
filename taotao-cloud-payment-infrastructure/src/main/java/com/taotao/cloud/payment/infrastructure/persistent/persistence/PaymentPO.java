@@ -66,33 +66,93 @@ public class PaymentPO extends BasePO<PaymentPO> {
      */
     private Integer sort;
 
+    /**
+     * 获取
+     *
+     * @return 字符串
+     * @since 2022.03
+     */
+
     public String getName() {
         return name;
     }
+
+    /**
+     * 获取
+     *
+     * @return 字符串
+     * @since 2022.03
+     */
 
     public String getCode() {
         return code;
     }
 
+    /**
+     * 获取
+     *
+     * @return 字符串
+     * @since 2022.03
+     */
+
     public String getIcon() {
         return icon;
     }
+
+    /**
+     * 获取
+     *
+     * @return 结果数量
+     * @since 2022.03
+     */
 
     public Integer getSort() {
         return sort;
     }
 
+    /**
+     * 设置
+     *
+     * @param sort sort
+     * @return 无返回值
+     * @since 2022.03
+     */
+
     public void setSort(Integer sort) {
         this.sort = sort;
     }
+
+    /**
+     * 设置
+     *
+     * @param icon icon
+     * @return 无返回值
+     * @since 2022.03
+     */
 
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
+    /**
+     * 设置
+     *
+     * @param code code
+     * @return 无返回值
+     * @since 2022.03
+     */
+
     public void setCode(String code) {
         this.code = code;
     }
+
+    /**
+     * 设置
+     *
+     * @param name name
+     * @return 无返回值
+     * @since 2022.03
+     */
 
     public void setName(String name) {
         this.name = name;

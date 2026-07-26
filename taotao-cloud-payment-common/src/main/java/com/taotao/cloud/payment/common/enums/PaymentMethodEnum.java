@@ -39,9 +39,25 @@ public enum PaymentMethodEnum {
     /** 支付名称 */
     private final String paymentName;
 
+    /**
+    /**
+     * 获取
+     *
+     * @return 字符串
+     * @since 2022.03
+     */
+
     public String getPlugin() {
         return plugin;
     }
+
+
+    /**
+     * paymentName 方法
+     *
+     * @return 字符串
+     * @since 2022.03
+     */
 
     public String paymentName() {
         return paymentName;
