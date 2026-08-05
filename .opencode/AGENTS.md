@@ -123,7 +123,7 @@ gradlew publishToMavenLocal                # 发布到本地
 ## NOTES
 
 - JDK 25 预览特性，`--enable-preview` + 大量 `--add-exports`
-- `taotao-cloud-dependencies:2026.08` BOM 未开源，外部构建需要私有仓库凭据
+- `taotao-cloud-dependencies:2026.09` BOM 未开源，外部构建需要私有仓库凭据
 - 四个环境配置：dev / test / pre / pro
 - 代码质量门禁：Checkstyle + SpotBugs + PMD + Spotless + OWASP + JaCoCo
 - Spring Boot 4.1.0 / Spring 7.0.8
