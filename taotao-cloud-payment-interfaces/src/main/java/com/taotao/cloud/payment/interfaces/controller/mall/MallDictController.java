@@ -41,8 +41,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "移动端-字典API", description = "移动端-字典API")
 public class MallDictController extends BusinessController {
 
-    @NotAuth
     @Operation(summary = "测试mybatis sql", description = "测试mybatis sql")
+    @NotAuth
     @GetMapping("/testMybatisQueryStructure")
     public Result<List<String>> testMybatisQueryStructure() {
         return Result.success(new ArrayList<>());
