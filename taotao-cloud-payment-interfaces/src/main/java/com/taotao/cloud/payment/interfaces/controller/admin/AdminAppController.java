@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.interfaces.controller.manager;
+package com.taotao.cloud.payment.interfaces.controller.admin;
 
 import com.taotao.boot.webagg.controller.BusinessController;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/app")
 @RequiredArgsConstructor
-public class ManagerAppController extends BusinessController {
+public class AdminAppController extends BusinessController {
 
     //    private final AppService appService;
     //
