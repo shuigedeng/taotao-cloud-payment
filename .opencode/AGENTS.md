@@ -6,7 +6,7 @@
 
 ## OVERVIEW
 
-支付领域 DDD 单体服务，基于 **Spring Boot 4.1.0 / JDK 25 / Gradle 9.5**。严格遵循六边形架构 + 领域驱动设计。
+支付领域 DDD 单体服务，基于 **Spring Boot 4.1.1 / JDK 25 / Gradle 9.5**。严格遵循六边形架构 + 领域驱动设计。
 
 核心业务：支付流水(PayFlow)、退款日志(RefundLog)、退款支撑(RefundSupport)、对账、支付单管理等。
 
@@ -126,5 +126,5 @@ gradlew publishToMavenLocal                # 发布到本地
 - `taotao-cloud-dependencies:2026.09` BOM 未开源，外部构建需要私有仓库凭据
 - 四个环境配置：dev / test / pre / pro
 - 代码质量门禁：Checkstyle + SpotBugs + PMD + Spotless + OWASP + JaCoCo
-- Spring Boot 4.1.0 / Spring 7.0.8
+- Spring Boot 4.1.1 / Spring 7.0.8
 - 支付核心技术栈：支付宝 SDK、微信支付、RocketMQ、Redis、gRPC

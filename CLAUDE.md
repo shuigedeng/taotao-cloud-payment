@@ -6,7 +6,7 @@
 |------|------|
 | JDK | 25（预览特性，`--enable-preview`） |
 | Gradle | 9.5 |
-| Spring Boot | 4.1.0 / Spring 7.0.8 |
+| Spring Boot | 4.1.1 / Spring 7.0.8 |
 | MyBatis-Plus | 3.5.16 |
 | MapStruct | 1.6.3 + Record Builder 52 + Lombok 1.18.46 |
 | RocketMQ / Kafka | 消息中间件 |
