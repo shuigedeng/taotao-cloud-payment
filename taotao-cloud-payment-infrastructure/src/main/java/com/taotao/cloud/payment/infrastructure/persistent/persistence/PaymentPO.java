@@ -110,7 +110,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * 设置
      *
      * @param sort sort
-     * @return 无返回值
      * @since 2022.03
      */
     public void setSort(Integer sort) {
@@ -121,7 +120,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * 设置
      *
      * @param icon icon
-     * @return 无返回值
      * @since 2022.03
      */
     public void setIcon(String icon) {
@@ -132,7 +130,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * 设置
      *
      * @param code code
-     * @return 无返回值
      * @since 2022.03
      */
     public void setCode(String code) {
@@ -143,7 +140,6 @@ public class PaymentPO extends BasePO<PaymentPO> {
      * 设置
      *
      * @param name name
-     * @return 无返回值
      * @since 2022.03
      */
     public void setName(String name) {

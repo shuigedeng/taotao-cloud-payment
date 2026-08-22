@@ -66,7 +66,6 @@ public class ExcelUploadAspect {
     /**
      * 上传
      *
-     * @return 无返回值
      * @since 2022.03
      */
     @Pointcut("@annotation(com.taotao.cloud.payment.biz.config.aop.execl.ExcelUpload)")
@@ -118,7 +117,6 @@ public class ExcelUploadAspect {
      *
      * @param message 消息
      * @param batchNo batchNo
-     * @return 无返回值
      * @since 2022.03
      */
     private void fail( String message, String batchNo ) {

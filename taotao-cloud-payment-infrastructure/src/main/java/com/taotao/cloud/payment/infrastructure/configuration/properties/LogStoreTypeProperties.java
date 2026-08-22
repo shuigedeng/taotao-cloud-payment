@@ -49,7 +49,6 @@ public class LogStoreTypeProperties {
      * 设置
      *
      * @param type type
-     * @return 无返回值
      * @since 2022.03
      */
     public void setType(String type) {

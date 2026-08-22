@@ -50,7 +50,6 @@ public class ExcelTest {
      * 数据export300w
      *
      * @param response 响应
-     * @return 无返回值
      * @since 2022.03
      */
     public void dataExport300w( HttpServletResponse response ) {
@@ -175,7 +174,6 @@ public class ExcelTest {
     /**
      * 导入2db from excel10w test
      *
-     * @return 无返回值
      * @since 2022.03
      */
     public void import2DBFromExcel10wTest() {
@@ -209,7 +207,6 @@ public class ExcelTest {
         /**
          * EasyExceGeneralDatalListener 方法
          *
-         * @return 无返回值
          * @since 2022.03
          */
         public EasyExceGeneralDatalListener() {
