@@ -76,7 +76,7 @@ gradlew publishToMavenLocal                             # 发布到本地
 
 - 四环境：dev / test / pre / pro
 - 质量门禁：Checkstyle + SpotBugs + PMD + Spotless + OWASP + JaCoCo
-- BOM `taotao-cloud-dependencies:2026.09` 未开源，需私有仓库凭据
+- BOM `taotao-cloud-dependencies:2026.10` 未开源，需私有仓库凭据
 - 外部调用配置：Nacos (`localhost:8848`)、Redis (`localhost:6379`)、MySQL (`localhost:3306`)
 
 ## 深度参考
