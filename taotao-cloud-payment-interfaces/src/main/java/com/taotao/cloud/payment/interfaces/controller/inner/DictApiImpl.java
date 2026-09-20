@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 为远程客户端提供粗粒度的调用接口
  */
-@Validated
 @RestController
 @RequestMapping
 public class DictApiImpl extends InnerController {
