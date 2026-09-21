@@ -36,10 +36,9 @@ import lombok.experimental.Accessors;
 @Setter
 @Getter
 @ToString
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "部门树VO")
+@Schema(description = "部门树响应对象")
 public class DeptTreeCO extends MapperNode implements INode {
 
     @Serial private static final long serialVersionUID = -4132785717179910025L;

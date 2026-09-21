@@ -34,6 +34,6 @@ public interface RefundLogApi {
     @GetExchange("/pay/flow/info/id/{id:[0-9]*}")
 	PayFlowResponse findPayFlowById(@PathVariable(value = "id") Long id);
 
-    @GetExchange("/RefundLogVO")
+    @GetExchange("/RefundLog响应对象")
 	PayFlowResponse queryByAfterSaleSn(String sn);
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.handler;
+package com.taotao.cloud.payment.application.flow.handler;
 
 /**
  * BaseHandler

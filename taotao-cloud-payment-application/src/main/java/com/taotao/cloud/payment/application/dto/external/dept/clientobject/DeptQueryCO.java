@@ -31,7 +31,6 @@ import lombok.experimental.Accessors;
 @Setter
 @Getter
 @ToString
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(description = "部门查询对象")

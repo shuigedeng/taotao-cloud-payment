@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.handler.dict;
+package com.taotao.cloud.payment.application.flow.handler.dict;
 
-import com.taotao.cloud.payment.application.handler.BaseHandler;
+import com.taotao.cloud.payment.application.flow.handler.BaseHandler;
 
 /**
  * DictHandler

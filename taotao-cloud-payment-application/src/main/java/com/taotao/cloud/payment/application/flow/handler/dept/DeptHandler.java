@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.application.handler.dept;
+package com.taotao.cloud.payment.application.flow.handler.dept;
 
-import com.taotao.cloud.payment.application.handler.BaseHandler;
+import com.taotao.cloud.payment.application.flow.handler.BaseHandler;
 
 /**
  * DeptHandler

@@ -37,7 +37,7 @@ import lombok.experimental.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "支付流水信息VO")
+@Schema(description = "支付流水信息响应对象")
 public class PayFlowVO implements Serializable {
     @Serial private static final long serialVersionUID = 5126530068827085130L;
 
