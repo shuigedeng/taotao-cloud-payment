@@ -40,7 +40,6 @@ public enum PaymentMethodEnum {
     private final String paymentName;
 
     /**
-    /**
      * 获取
      *
      * @return 字符串
