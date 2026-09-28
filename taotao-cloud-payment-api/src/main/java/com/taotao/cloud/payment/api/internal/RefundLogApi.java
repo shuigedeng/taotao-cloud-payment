@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.inner;
+package com.taotao.cloud.payment.api.internal;
 
-import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.inner.response.PayFlowResponse;
+import com.taotao.cloud.payment.api.internal.response.PayFlowResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;

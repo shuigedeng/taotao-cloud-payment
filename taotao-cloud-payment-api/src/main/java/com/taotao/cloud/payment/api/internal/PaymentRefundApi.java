@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.inner;
+package com.taotao.cloud.payment.api.internal;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
 import org.springframework.web.service.annotation.HttpExchange;

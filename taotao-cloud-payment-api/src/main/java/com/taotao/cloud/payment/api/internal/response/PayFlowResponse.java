@@ -1,4 +1,4 @@
-package com.taotao.cloud.payment.api.inner.response;
+package com.taotao.cloud.payment.api.internal.response;
 
 /**
  * PayFlowResonse 类

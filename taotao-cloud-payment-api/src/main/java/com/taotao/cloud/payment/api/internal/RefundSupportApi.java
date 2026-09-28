@@ -14,30 +14,15 @@
  * limitations under the License.
  */
 
-package com.taotao.cloud.payment.api.inner;
+package com.taotao.cloud.payment.api.internal;
 
 import com.taotao.boot.common.constant.ServiceNameConstants;
-import com.taotao.cloud.payment.api.inner.response.PayFlowResponse;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
+import org.springframework.web.service.annotation.PostExchange;
 
-/**
- * 远程调用快递公司模块
- *
- * @author shuigedeng
- * @since 2020/5/2 16:42
- */
 @HttpExchange
-public interface PayFlowApi {
+public interface RefundSupportApi {
 
-    /**
-     * 根据id查询支付信息
-     *
-     * @param id id
-     * @return 支付信息
-     * @since 2020/11/20 上午10:45
-     */
-    @GetExchange("/pay/flow/info/id/{id:[0-9]*}")
-	PayFlowResponse findPayFlowById(@PathVariable(value = "id") Long id);
+    @PostExchange("/refund")
+    void refund(String sn);
 }
